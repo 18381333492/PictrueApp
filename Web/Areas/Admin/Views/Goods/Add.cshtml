@@ -1,0 +1,33 @@
+﻿
+
+<form id="add_form">
+<table class="gridtable">
+    <tr>
+        <td>图片分类</td>
+        <td>
+            <input class="easyui-combobox" name="sGoodsCategoryId"
+                   data-options="valueField:'id',textField:'text',required:true,url:'/Admin/GoodsCategory/GetAllGoodsCategory?bIsAdd=0'" />
+        </td>
+    </tr>
+    <tr>
+        <td>图片名称</td>
+        <td>
+            <input class="easyui-textbox" name="sGoodsName" />
+        </td>
+    </tr>
+    <tr>
+        <td>上传图片(必传)</td>
+        <td>
+            <div id="sPicturePath"></div>
+            <input type="hidden" name="sPicturePath" />
+        </td>
+    </tr>
+    <tr>
+        <td>上传动态图片(可不传)</td>
+        <td>
+            <div id="sGifPicturePath"></div>
+            <input type="hidden" name="sGifPicturePath" />
+        </td>
+    </tr>
+</table>
+</form>

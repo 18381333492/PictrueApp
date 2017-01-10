@@ -1,0 +1,180 @@
+﻿@{
+    ViewBag.Title = "商品";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+ <table id="Goods"></table>
+  <div id="Goods_toolbar" style="padding:5px;">
+     <form id="search">
+         <span>分类:</span>
+         <input  class="easyui-combobox" name="sGoodsCategoryId"
+                data-options="valueField:'id',textField:'text',url:'/Admin/GoodsCategory/GetAllGoodsCategory'" />
+          <span>图片名称:</span>
+         <input class="easyui-textbox" name="sKeyWord" data-options="prompt:'图片名称',required:false"> 
+         <a id="btn"  class="easyui-linkbutton" data-options="iconCls:'icon-search'">查 询</a>
+         <br /><br />
+          @Html.Partial("~/Areas/Admin/Views/Shared/_Button.cshtml")
+     </form>
+</div>
+<script src="~/Scripts/plug-in/picture/upload.js"></script>
+<script type="text/javascript">
+    $(function () {
+        var f = new eui();
+        var d = new extend();
+        var goods = f.config("Admin", "Goods");
+
+        goods.picture = new upload();
+        goods.gifpicture = new upload();
+        
+        //商品的查询
+        goods.Search = function () {
+            var param = $('#search').serializeArray();
+            goods.grid.datagrid('reload', d.ToFromObject(param));
+            //goods.grid.datagrid({
+            //    queryParams:d.ToFromObject(param)
+            //});
+        }
+
+        /*!
+        * method:新增商品
+        * author:[汤台]
+        * version:[1.0.0]
+        */
+        goods.Insert.handle = function () {
+            var dialog = f.dialog(goods.route("Add"), "新增图片", function () {
+                if ($(goods.form.add).form("validate")) {
+                    goods.button.disable();
+                    var param = d.ToFromObject($(goods.form.add).serializeArray());
+                    if (param.sPicturePath == "") {
+                        return  f.alert("图片必须上传!");
+                    }
+                    f.post(goods.route("Insert"), param, function (res) {
+                        dialog.dialog("close");
+                        goods.grid.datagrid("reload");
+                    },
+                    function (r) {
+                        f.alert(r.info);
+                        goods.button.enable();
+                    });
+                }
+            }, 450, 500, function () {
+                //页面加载完成执行
+                goods.picture.create("sPicturePath");
+                goods.gifpicture.create("sGifPicturePath");
+            });
+        }
+
+        /*!
+        * method:编辑商品
+        * author:[汤台]
+        * version:[1.0.0]
+        */
+        goods.Update.handle = function () {
+            var select = goods.grid.datagrid('getSelections');
+            if (select.length == 1) {
+                var dialog = f.dialog(goods.route("Edit")+ "?ID=" + select[0].ID, "编辑图片", function () {
+                    if ($(goods.form.edit).form("validate")) {
+                        goods.button.disable();
+                        var param = d.ToFromObject($(goods.form.edit).serializeArray());
+                        if (param.sPicturePath == "") {
+                            return f.alert("图片必须上传!");
+                        }
+                        f.post(goods.route("Update"), param, function (res) {
+                            dialog.dialog("close");
+                            goods.grid.datagrid("reload");
+                        },
+                        function (r) {
+                            f.alert(r.info);
+                            goods.button.enable();
+                        });
+                    }
+                }, 450, 500, function () {
+                    //页面加载完成执行
+                    goods.picture.create("sPicturePath");
+                    goods.gifpicture.create("sGifPicturePath");
+                });
+            }
+            else {
+                f.alert("请选择一条数据进行操作!");
+            }
+
+        }
+
+        /*!
+        * method:删除商品
+        * author:[汤台]
+        * version:[1.0.0]
+        */
+        goods.Cancel.handle = function () {
+            var select = goods.grid.datagrid('getSelections');
+            if (select.length>0) {
+                $.messager.confirm('确认', '您确认想要删除所选择的数据？', function (r) {
+                    if (r) {
+                        f.post(goods.route("Cancel"), { Ids: d.GetIds(select) },
+                            function (res) {
+                                f.alert(res.info);
+                                goods.grid.datagrid("reload");
+                                goods.grid.datagrid('clearSelections');
+                            });
+                    }
+                });
+            }
+            else {
+                f.alert("请选择数据进行操作!");
+            }
+        }
+
+
+
+
+
+        /*!
+        * method:绑定用户按钮事件
+        * author:[汤台]
+        * version:[1.0.0]
+        */
+        $(goods.toolbar)
+                .on('click', 'a[data-name=goods_add]', goods.Insert.handle)
+                .on('click', 'a[data-name=goods_edit]', goods.Update.handle)
+                .on('click', 'a[data-name=goods_cancel]', goods.Cancel.handle)
+                .on('click', '#btn', goods.Search)
+
+
+        /*!
+        * method:用户数据列表(datagrid)的绑定
+        * author:[汤台]
+        * version:[1.0.0]
+        */
+        goods.grid.datagrid({
+            fit:true,
+            url: goods.route('List'),
+            toolbar: goods.toolbar,
+            rownumbers:true,
+            striped: true,
+            pagination: true,
+            loadMsg: "正在加载...",
+            sortName: 'dInsertTime',//默认的排序字段名
+            sortOrder:'desc',//默认的排序
+            columns: [[
+                { field: '', checkbox: true, },
+                { field: 'sGoodsName', title: '图片名称', align: 'center', width: 250 },
+                {
+                    field: 'GoodsCatetoryName', title: '图片分类', align: 'center', width: 150, formatter: function (value) {
+                        return "<span   style='color:green'>" + value + "<span>";
+                    }
+                },
+                {
+                    field: 'sPicturePath', title: '图片', align: 'center', width: 200, formatter: function (value) {
+                        return "<img style='height:80px; width:80px;' src=" + value + ">";
+                    }
+                },
+                { field: 'dInsertTime', title: '添加时间', align: 'center', width: 200},
+                {
+                    field: 'X', title: '操作', align: 'center', width: 100, formatter: function (value, row, index) {
+                        return '<a href="#" style="color:red">查看评论</a>'
+                    }
+                }
+            ]],
+        });
+    });
+
+</script>

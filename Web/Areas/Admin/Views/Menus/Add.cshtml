@@ -1,0 +1,31 @@
+﻿
+
+<form id="add_form">
+<table class="gridtable">
+    <tr>
+        <td>所属菜单</td>
+        <td>
+            <input class="easyui-combobox" name="sParentMenuId"
+                   data-options="valueField:'id',textField:'text',url:'/Admin/Menus/GetFirstMenus'" />
+        </td>
+    </tr>
+    <tr>
+        <td>菜单名称</td>
+        <td>
+            <input  class="easyui-textbox"  name="sMenuName"/>
+        </td>
+    </tr>
+    <tr>
+        <td>菜单链接</td>
+        <td>
+            <input class="easyui-textbox" name="sMenuUrl" />
+        </td>
+    </tr>
+    <tr>
+        <td>排 序</td>
+        <td>
+            <input class="easyui-textbox" name="iOrder"/>
+        </td>
+    </tr>
+</table>
+</form>

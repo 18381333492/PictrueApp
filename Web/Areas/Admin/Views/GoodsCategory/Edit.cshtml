@@ -1,0 +1,16 @@
+﻿
+
+@using EFModel;
+@model GoodsCategory
+<form id="edit_form">
+    <input name="ID" value="@Model.ID" type="hidden" />
+    <input name="dInsertTime" value="@Model.dInsertTime" type="hidden" />
+<table class="gridtable">
+    <tr>
+        <td>图片分类名称</td>
+        <td>
+            <input class="easyui-textbox" name="GoodsCatetoryName" value="@Model.GoodsCatetoryName" />
+        </td>
+    </tr>
+</table>
+</form>

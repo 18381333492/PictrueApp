@@ -1,0 +1,37 @@
+﻿
+
+@using EFModel;
+@model Goods
+<form id="edit_form">
+<input name="ID" value="@Model.ID"  type="hidden"/>
+<input name="dInsertTime" value="@Model.dInsertTime" type="hidden" />
+<table class="gridtable">
+    <tr>
+        <td>图片分类</td>
+        <td>
+            <input class="easyui-combobox" name="sGoodsCategoryId" value="@Model.sGoodsCategoryId"
+                   data-options="valueField:'id',textField:'text',required:true,url:'/Admin/GoodsCategory/GetAllGoodsCategory?bIsAdd=0'" />
+        </td>
+    </tr>
+    <tr>
+        <td>图片名称</td>
+        <td>
+            <input class="easyui-textbox" name="sGoodsName" value="@Model.sGoodsName" />
+        </td>
+    </tr>
+    <tr>
+        <td>上传图片(必传)</td>
+        <td>
+            <div id="sPicturePath"></div>
+            <input type="hidden" name="sPicturePath" value="@Model.sPicturePath" />
+        </td>
+    </tr>
+    <tr>
+        <td>上传动态图片(可不传)</td>
+        <td>
+            <div id="sGifPicturePath"></div>
+            <input type="hidden" name="sGifPicturePath" value="@Model.sGifPicturePath" />
+        </td>
+    </tr>
+</table>
+</form>

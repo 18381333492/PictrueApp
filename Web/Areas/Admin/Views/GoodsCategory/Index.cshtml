@@ -1,0 +1,121 @@
+﻿@{
+    ViewBag.Title = "商品分类";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+ <table id="GoodsCategory"></table>
+  <div id="GoodsCategory_toolbar" style="padding:5px;">
+     <form id="search">
+          @Html.Partial("~/Areas/Admin/Views/Shared/_Button.cshtml")
+     </form>
+</div>
+<script type="text/javascript">
+    $(function () {
+        var f = new eui();
+        var d = new extend();
+        var goodscategory = f.config("Admin", "GoodsCategory");
+        
+        /*!
+        * method:新增商品分类
+        * author:[汤台]
+        * version:[1.0.0]
+        */
+        goodscategory.Insert.handle = function () {
+            var dialog = f.dialog(goodscategory.route("Add"), "新增图片分类", function () {
+                if ($(goodscategory.form.add).form("validate")) {
+                    goodscategory.button.disable();
+                    var param = $(goodscategory.form.add).serialize();
+                    f.post(goodscategory.route("Insert"), param, function (res) {
+                        dialog.dialog("close");
+                        goodscategory.grid.datagrid("reload");
+                    },
+                    function (r) {
+                        f.alert(r.info);
+                        goodscategory.button.enable();
+                    });
+                }
+            },400,150);
+        }
+
+        /*!
+        * method:编辑商品分类
+        * author:[汤台]
+        * version:[1.0.0]
+        */
+        goodscategory.Update.handle = function () {
+            var select = goodscategory.grid.datagrid('getSelections');
+            if (select.length) {
+                var dialog = f.dialog(goodscategory.route('Edit') + "?ID=" + select[0].ID, '编辑菜单',
+                    function () {
+                        if ($(goodscategory.form.edit).form('validate')) {
+                            goodscategory.button.disable();
+                            var data = $(goodscategory.form.edit).serialize();
+                            f.post(goodscategory.route('Update'), data, function (res) {
+                                dialog.dialog('close');
+                                goodscategory.grid.datagrid('reload');
+                            });
+                        }
+                    }, 400, 150);
+            }
+            else {
+                f.alert("请选择一条数据进行操作!");
+            }
+        }
+
+
+        /*!
+        * method:删除商品分类
+        * author:[汤台]
+        * version:[1.0.0]
+        */
+        goodscategory.Cancel.handle = function () {
+            var select = goodscategory.grid.datagrid('getSelections');
+            if (select.length>0) {
+                $.messager.confirm('确认', '您确认想要删除所选择的数据？', function (r) {
+                    if (r) {
+                        f.post(goodscategory.route("Cancel"), { Ids: d.GetIds(select) },
+                            function (res) {
+                                f.alert(res.info);
+                                goodscategory.grid.datagrid("reload");
+                                goodscategory.grid.datagrid('clearSelections');
+                            });
+                    }
+                });
+            }
+            else {
+                f.alert("请选择数据进行操作!");
+            }
+        }
+
+        /*!
+        * method:绑定用户按钮事件
+        * author:[汤台]
+        * version:[1.0.0]
+        */
+        $(goodscategory.toolbar)
+                .on('click', 'a[data-name=goodscategory_add]', goodscategory.Insert.handle)
+                .on('click', 'a[data-name=goodscategory_edit]', goodscategory.Update.handle)
+                .on('click', 'a[data-name=goodscategory_cancel]', goodscategory.Cancel.handle)
+
+
+        /*!
+        * method:商品分类数据列表(datagrid)的绑定
+        * author:[汤台]
+        * version:[1.0.0]
+        */
+        goodscategory.grid.datagrid({
+            fit:true,
+            url: goodscategory.route('List'),
+            toolbar: goodscategory.toolbar,
+            rownumbers:true,
+            striped: true,
+            pagination: true,
+            loadMsg: "正在加载...",
+            columns: [[
+                { field: '', checkbox: true, },
+                { field: 'GoodsCatetoryName', title: '图片分类名称', align: 'center', width: 250 },
+                { field: 'dInsertTime', title: '添加时间', align: 'center', width: 300}
+            ]],
+        });
+    });
+
+</script>
