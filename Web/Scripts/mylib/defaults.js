@@ -13,6 +13,13 @@ void function () {
         missingMessage:'该字段为必填项!'
     });
 
+    $.extend($.fn.numberbox.defaults, {
+        height: 30,
+        width: 200,
+        required: true,
+        missingMessage: '该字段为必填项!'
+    });
+
     $.extend($.fn.combobox.defaults, {
         height: 30,
         width: 200,

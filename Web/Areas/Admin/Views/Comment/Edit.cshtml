@@ -1,0 +1,35 @@
+﻿
+@using EFModel;
+@model Comment
+<form id="edit_form">
+    <input  type="hidden" name="ID" value="@Model.ID"/>
+    <input type="hidden" name="dInserTime" value="@Model.dInserTime" />
+    <input type="hidden" name="sGoodsId" value="@Model.sGoodsId" />
+    <table class="gridtable">
+        <tr>
+            <td>评论人名称</td>
+            <td>
+                <input name="sCommentName" type="text" class="easyui-textbox" data-options="min:0" value="@Model.sCommentName" />
+            </td>
+        </tr>
+        <tr>
+            <td>头像(可不传)</td>
+            <td>
+                <div id="sCommentHeadPic" style="border-radius:50%;border:1px solid #ccc;width:80px;height:80px;overflow:hidden;"></div>
+                <input type="hidden" name="sCommentHeadPic" value="@Model.sCommentHeadPic" />
+            </td>
+        </tr>
+        <tr>
+            <td>赞数量</td>
+            <td>
+                <input name="iCommentCount" type="text" class="easyui-numberbox" data-options="min:0" value="@Model.iCommentCount" />
+            </td>
+        </tr>
+        <tr>
+            <td>评论内容</td>
+            <td>
+                <textarea name="sContens" style="width:280px;height:80px;line-height:20px;">@Model.sContens</textarea>
+            </td>
+        </tr>
+    </table>
+</form>

@@ -28,10 +28,10 @@ namespace EFModel
         public virtual DbSet<Button> Button { get; set; }
         public virtual DbSet<Comment> Comment { get; set; }
         public virtual DbSet<Goods> Goods { get; set; }
+        public virtual DbSet<GoodsCategory> GoodsCategory { get; set; }
         public virtual DbSet<Menus> Menus { get; set; }
         public virtual DbSet<OperateLog> OperateLog { get; set; }
         public virtual DbSet<Role> Role { get; set; }
         public virtual DbSet<User> User { get; set; }
-        public virtual DbSet<GoodsCategory> GoodsCategory { get; set; }
     }
 }

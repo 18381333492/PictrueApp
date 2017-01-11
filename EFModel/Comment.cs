@@ -21,5 +21,6 @@ namespace EFModel
         public string sContens { get; set; }
         public bool bIsDeleted { get; set; }
         public System.DateTime dInserTime { get; set; }
+        public System.Guid sGoodsId { get; set; }
     }
 }

@@ -27,6 +27,7 @@
           <Property Name="sContens" Type="nvarchar" MaxLength="255" Nullable="false" />
           <Property Name="bIsDeleted" Type="bit" Nullable="false" />
           <Property Name="dInserTime" Type="datetime" Nullable="false" />
+          <Property Name="sGoodsId" Type="uniqueidentifier" Nullable="false" />
         </EntityType>
         <EntityType Name="Goods">
           <Key>
@@ -133,6 +134,7 @@
           <Property Name="sContens" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="bIsDeleted" Type="Boolean" Nullable="false" />
           <Property Name="dInserTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="sGoodsId" Type="Guid" Nullable="false" />
         </EntityType>
         <EntityType Name="Goods">
           <Key>
@@ -146,6 +148,15 @@
           <Property Name="dInsertTime" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="bIsDeleted" Type="Boolean" Nullable="false" />
           <Property Name="sGoodsCategoryId" Type="Guid" Nullable="false" />
+        </EntityType>
+        <EntityType Name="GoodsCategory">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Guid" Nullable="false" />
+          <Property Name="GoodsCatetoryName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="dInsertTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="bIsDeleted" Type="Boolean" Nullable="false" />
         </EntityType>
         <EntityType Name="Menus">
           <Key>
@@ -198,21 +209,12 @@
           <EntitySet Name="Button" EntityType="Self.Button" />
           <EntitySet Name="Comment" EntityType="Self.Comment" />
           <EntitySet Name="Goods" EntityType="Self.Goods" />
+          <EntitySet Name="GoodsCategory" EntityType="Self.GoodsCategory" />
           <EntitySet Name="Menus" EntityType="Self.Menus" />
           <EntitySet Name="OperateLog" EntityType="Self.OperateLog" />
           <EntitySet Name="Role" EntityType="Self.Role" />
           <EntitySet Name="User" EntityType="Self.User" />
-          <EntitySet Name="GoodsCategory" EntityType="PictrueAppModel.GoodsCategory" />
         </EntityContainer>
-        <EntityType Name="GoodsCategory">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="Guid" Nullable="false" />
-          <Property Name="GoodsCatetoryName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="dInsertTime" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="bIsDeleted" Type="Boolean" Nullable="false" />
-        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -234,6 +236,7 @@
           <EntitySetMapping Name="Comment">
             <EntityTypeMapping TypeName="PictrueAppModel.Comment">
               <MappingFragment StoreEntitySet="Comment">
+                <ScalarProperty Name="sGoodsId" ColumnName="sGoodsId" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="sCommentName" ColumnName="sCommentName" />
                 <ScalarProperty Name="sCommentHeadPic" ColumnName="sCommentHeadPic" />
@@ -247,12 +250,22 @@
           <EntitySetMapping Name="Goods">
             <EntityTypeMapping TypeName="PictrueAppModel.Goods">
               <MappingFragment StoreEntitySet="Goods">
-                <ScalarProperty Name="sGoodsCategoryId" ColumnName="sGoodsCategoryId" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="sGoodsName" ColumnName="sGoodsName" />
                 <ScalarProperty Name="sPicturePath" ColumnName="sPicturePath" />
                 <ScalarProperty Name="sGifPicturePath" ColumnName="sGifPicturePath" />
                 <ScalarProperty Name="dPrices" ColumnName="dPrices" />
+                <ScalarProperty Name="dInsertTime" ColumnName="dInsertTime" />
+                <ScalarProperty Name="bIsDeleted" ColumnName="bIsDeleted" />
+                <ScalarProperty Name="sGoodsCategoryId" ColumnName="sGoodsCategoryId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GoodsCategory">
+            <EntityTypeMapping TypeName="PictrueAppModel.GoodsCategory">
+              <MappingFragment StoreEntitySet="GoodsCategory">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="GoodsCatetoryName" ColumnName="GoodsCatetoryName" />
                 <ScalarProperty Name="dInsertTime" ColumnName="dInsertTime" />
                 <ScalarProperty Name="bIsDeleted" ColumnName="bIsDeleted" />
               </MappingFragment>
@@ -306,16 +319,6 @@
                 <ScalarProperty Name="sRoleID" ColumnName="sRoleID" />
                 <ScalarProperty Name="bIsDeleted" ColumnName="bIsDeleted" />
                 <ScalarProperty Name="dInsertTime" ColumnName="dInsertTime" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="GoodsCategory">
-            <EntityTypeMapping TypeName="PictrueAppModel.GoodsCategory">
-              <MappingFragment StoreEntitySet="GoodsCategory">
-                <ScalarProperty Name="bIsDeleted" ColumnName="bIsDeleted" />
-                <ScalarProperty Name="dInsertTime" ColumnName="dInsertTime" />
-                <ScalarProperty Name="GoodsCatetoryName" ColumnName="GoodsCatetoryName" />
-                <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

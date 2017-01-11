@@ -14,6 +14,7 @@ $(function () {
             cookie = JSON.parse(cookie);
             $('.name input').val(cookie.sUserName);
             $('.password input').val(cookie.sPassWord);
+            $('.remember input:checkbox').prop("checked",true);
         }
     }
     else {
@@ -59,7 +60,11 @@ $(function () {
                         //是否选中记住密码
                         if ($('.remember input:checkbox').prop("checked")) {
                             if (window.localStorage) {
-                                window.localStorage.setItem("App_User", JSON.stringify({ sUserName: sUserName, sPassWord: sPassWord}))
+                                window.localStorage.setItem("App_User", JSON.stringify({
+                                    sUserName: sUserName,
+                                    sPassWord: sPassWord,
+                                    IsRember:true
+                                }))
                             }
                             else {
                                 alert("浏览器版本太低,不支持记住密码功能!");

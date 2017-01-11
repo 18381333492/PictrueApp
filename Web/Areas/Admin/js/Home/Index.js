@@ -9,12 +9,16 @@ $(function () {
     */
     $('#tabs').tabs({
         onSelect: function (title, index) {
-            //位置的绑定
-            var text = $("#my_menu a[sMenuName=" + title + "]");
-            var parent = $(text).parent().find('span').text();
-            parent = parent + ">";
-            var spath = parent + title;
-            $('#Address').text(spath);   
+            try {
+                //位置的绑定
+                var text = $("#my_menu a[sMenuName=" + title + "]");
+                var parent = $(text).parent().find('span').text();
+                parent = parent + ">";
+                var spath = parent + title;
+                $('#Address').text(spath);
+            } catch (e) {
+                return;
+            }
         }
     });
 
@@ -37,7 +41,7 @@ $(function () {
     * version:[1.0.0]
     */
     function LoadMenu(res) {
-        if (res.data.length>0) {
+        if (res.data.length > 0) {
             var Menus = JSON.parse(res.data);
             var html = [];
             $(Menus).each(function () {
@@ -64,16 +68,28 @@ $(function () {
                         title: $(this).text(),
                         content: '<iframe scrolling="auto" frameborder="0"  src="' + $(this).attr("url") + '" width="100%" height="' + height + 'px";></iframe>',
                         closable: true
-                    });                  
+                    });
                     /*遮掩层效果和等待效果*/
-                    var panel = $('#tabs').tabs('getTab', $(this).text());
-                 //   var height = $(panel).height();
-                // $(panel).append("<section class='opacity mod model-1' style='height:" + height + "px'><span class='circles-loader'>Loading</span></section>");
+                    var panel = $('#tabs').tabs('select', $(this).text());
                 }
             });
         }
     }
 
+    //自定义添加tabs标签
+    window.AddAutoTab = function (url, title) {
+        if ($('#tabs').tabs("getTab", title)) {
+            $('#tabs').tabs("select", title);
+        }
+        else {
+            var height = $('#tabs').height() - 35 - 2 * 4;
+            $('#tabs').tabs('add', {
+                title: title,
+                content: '<iframe scrolling="auto" frameborder="0"  src="' + url + '" width="100%" height="' + height + 'px";></iframe>',
+                closable: true
+            });
+        }
+    }
     /*!
     * method:安全退出/注销
     * author:[汤台]

@@ -47,6 +47,7 @@
   <ItemGroup>
     <Compile Include="Excute\ButtonExcute.cs" />
     <Compile Include="Excute\GoodsCategoryExcute.cs" />
+    <Compile Include="Excute\CommentExcute.cs" />
     <Compile Include="Excute\MenusExcute.cs" />
     <Compile Include="Excute\OperateLogExcute.cs" />
     <Compile Include="Excute\RoleExcute.cs" />
@@ -55,6 +56,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="QueryBase.cs" />
     <Compile Include="Query\GoodsCategoryQuery.cs" />
+    <Compile Include="Query\CommentQuery.cs" />
     <Compile Include="Query\MenusQuery.cs" />
     <Compile Include="Query\ButtonQuery.cs" />
     <Compile Include="Query\RoleQuery.cs" />

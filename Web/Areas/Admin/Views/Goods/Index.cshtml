@@ -29,9 +29,6 @@
         goods.Search = function () {
             var param = $('#search').serializeArray();
             goods.grid.datagrid('reload', d.ToFromObject(param));
-            //goods.grid.datagrid({
-            //    queryParams:d.ToFromObject(param)
-            //});
         }
 
         /*!
@@ -123,9 +120,14 @@
             }
         }
 
-
-
-
+        /*!
+        * method:查看商品评价
+        * author:[汤台]
+        * version:[1.0.0]
+        */
+        goods.Comment = function (id, sGoodsName) {
+            window.parent.AddAutoTab("/Admin/Comment/Index?sGoodsId=" + id + "", sGoodsName);
+        }
 
         /*!
         * method:绑定用户按钮事件
@@ -170,10 +172,18 @@
                 { field: 'dInsertTime', title: '添加时间', align: 'center', width: 200},
                 {
                     field: 'X', title: '操作', align: 'center', width: 100, formatter: function (value, row, index) {
-                        return '<a href="#" style="color:red">查看评论</a>'
+                        return '<a href="#" style="color:red" class="comment" id="' + row.ID + '" data-name="' + row.sGoodsName + '">查看评论</a>'
                     }
                 }
             ]],
+            onLoadSuccess: function () {
+                $('.comment').on("click", function () {
+                    var id = $(this).attr("id");
+                    var sGoodsName = $(this).attr("data-name");
+                    if (sGoodsName.length > 6) sGoodsName = sGoodsName.substring(0, 6)+".."
+                    goods.Comment(id, sGoodsName);
+                })
+            }
         });
     });
 

@@ -1,0 +1,149 @@
+﻿@{
+    ViewBag.Title = "商品评价";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+ <table id="Comment"></table>
+  <div id="Comment_toolbar" style="padding:5px;">
+     <form id="search">
+         <a class="easyui-linkbutton" data-name="comment_add" data-options="iconCls:'icon-add',plain:true">添加评论</a>
+         <a class="easyui-linkbutton" data-name="comment_edit" data-options="iconCls:'icon-edit',plain:true">编辑评论</a>
+         <a class="easyui-linkbutton" data-name="comment_cancel" data-options="iconCls:'icon-clear',plain:true">删除评论</a>
+     </form>
+</div>
+<script src="~/Scripts/plug-in/picture/upload.js"></script>
+<script type="text/javascript">
+    $(function () {
+        var sGoodsId = '@ViewBag.sGoodsId';
+        var f = new eui();
+        var d = new extend();
+        var comment = f.config("Admin", "Comment");
+
+        comment.picture = new upload();
+        /*!
+        * method:新增评价
+        * author:[汤台]
+        * version:[1.0.0]
+        */
+        comment.Insert.handle = function () {
+            var dialog = f.dialog(comment.route("Add"), "新增评价", function () {
+                if ($(comment.form.add).form("validate")) {
+                    comment.button.disable();
+                    var param = d.ToFromObject($(comment.form.add).serializeArray());
+                    param.sGoodsId = sGoodsId;
+                    f.post(comment.route("Insert"), param, function (res) {
+                        dialog.dialog("close");
+                        comment.grid.datagrid("reload");
+                    },
+                    function (r) {
+                        f.alert(r.info);
+                        comment.button.enable();
+                    });
+                }
+            }, 450, 430, function () {
+                //页面加载完成执行
+                comment.picture.create("sCommentHeadPic", {width:80,height:80});
+            });
+        }
+
+        /*!
+        * method:编辑评价
+        * author:[汤台]
+        * version:[1.0.0]
+        */
+        comment.Update.handle = function () {
+            var select = comment.grid.datagrid('getSelections');
+            if (select.length == 1) {
+                var dialog = f.dialog(comment.route("Edit") + "?ID=" + select[0].ID, "编辑评价", function () {
+                    if ($(comment.form.edit).form("validate")) {
+                        comment.button.disable();
+                        var param = d.ToFromObject($(comment.form.edit).serializeArray());
+                        f.post(comment.route("Update"), param, function (res) {
+                            dialog.dialog("close");
+                            comment.grid.datagrid("reload");
+                        },
+                        function (r) {
+                            f.alert(r.info);
+                            comment.button.enable();
+                        });
+                    }
+                }, 450, 430, function () {
+                    //页面加载完成执行
+                    comment.picture.create("sCommentHeadPic", { width: 80, height: 80 });
+                });
+            }
+            else {
+                f.alert("请选择一条数据进行操作!");
+            }
+
+        }
+
+        /*!
+        * method:删除评价
+        * author:[汤台]
+        * version:[1.0.0]
+        */
+        comment.Cancel.handle = function () {
+            var select = comment.grid.datagrid('getSelections');
+            if (select.length>0) {
+                $.messager.confirm('确认', '您确认想要删除所选择的数据？', function (r) {
+                    if (r) {
+                        f.post(comment.route("Cancel"), { Ids: d.GetIds(select) },
+                            function (res) {
+                                f.alert(res.info);
+                                comment.grid.datagrid("reload");
+                                comment.grid.datagrid('clearSelections');
+                            });
+                    }
+                });
+            }
+            else {
+                f.alert("请选择数据进行操作!");
+            }
+        }
+
+        /*!
+        * method:绑定用户按钮事件
+        * author:[汤台]
+        * version:[1.0.0]
+        */
+        $(comment.toolbar)
+                .on('click', 'a[data-name=comment_add]', comment.Insert.handle)
+                .on('click', 'a[data-name=comment_edit]', comment.Update.handle)
+                .on('click', 'a[data-name=comment_cancel]', comment.Cancel.handle)
+
+
+        /*!
+        * method:用户数据列表(datagrid)的绑定
+        * author:[汤台]
+        * version:[1.0.0]
+        */
+        comment.grid.datagrid({
+            fit:true,
+            url: comment.route('List') + "?sGoodsId=" + sGoodsId,
+            toolbar: comment.toolbar,
+            rownumbers:true,
+            striped: true,
+            pagination: true,
+            loadMsg: "正在加载...",
+            sortName: 'dInserTime',//默认的排序字段名
+            sortOrder:'desc',//默认的排序
+            columns: [[
+                { field: '', checkbox: true, },
+                { field: 'sCommentName', title: '评论人', align: 'center', width: 250 },
+                {
+                    field: 'sCommentHeadPic', title: '头像', align: 'center', width: 150, formatter: function (value) {
+                        var html = '<div style="border-radius:50%;border:1px solid #ccc;width:60px;height:60px;overflow:hidden;margin:auto"><img src=' + value + ' style="height:60px;width:60px;"></div>';
+                        return html;
+                    }
+                 },
+                {
+                    field: 'iCommentCount', title: '赞数量', align: 'center', width: 150, formatter: function (value) {
+                        return "<span   style='color:green'>" + value + "<span>";
+                    }
+                },
+                { field: 'dInserTime', title: '添加时间', align: 'center', width: 200 }
+            ]],
+        });
+    });
+
+</script>

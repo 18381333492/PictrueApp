@@ -123,8 +123,11 @@ namespace Web.App_Start
                     if (sPath.Contains("index") && !sPath.Contains("home"))
                     {
                         var menu = (Session[SESSION.Menu] as List<Menus>).Where(m => m.sMenuUrl.ToLower() == sPath).FirstOrDefault();
-                        var buttonList = (Session[SESSION.Button] as List<Button>).Where(m => m.sToMenuId == menu.ID).OrderBy(m=>m.iOrder).ToList();
-                        filterContext.Controller.ViewData["Button"] = buttonList;
+                        if (menu != null)
+                        {
+                            var buttonList = (Session[SESSION.Button] as List<Button>).Where(m => m.sToMenuId == menu.ID).OrderBy(m => m.iOrder).ToList();
+                            filterContext.Controller.ViewData["Button"] = buttonList;
+                        }
                     }
                 }
             }

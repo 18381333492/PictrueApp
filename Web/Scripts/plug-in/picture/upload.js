@@ -10,6 +10,8 @@ function upload() {
         //默认参数
     var defaults = {
         url: "/HandleProgram/PictureUpload.ashx",
+        width:120,
+        height:120,
     }
 
     //创建图片上传插件
@@ -26,6 +28,9 @@ function upload() {
                 $(element).html("");
                 data = data.trim();
                 $(element).append(data);//追加html
+
+                //设置图片的大小
+                $(element).find("img").attr("style", "width:" + defaults.width + "px;height:" + defaults.height + "px;");
                      //初始化图片路径
                 if($(element).next().val()!=""){
                     $(element).find("img").attr("src", $(element).next().val())
