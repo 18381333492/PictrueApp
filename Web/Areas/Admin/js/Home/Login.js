@@ -79,6 +79,7 @@ $(function () {
                         alert(r.info);
                         $('.codeImg img').click();
                         $this.parent().removeClass("loginout").addClass("login");
+                        state = true;
                     });
         }
     });
