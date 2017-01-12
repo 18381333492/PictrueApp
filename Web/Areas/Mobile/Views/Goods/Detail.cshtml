@@ -1,0 +1,74 @@
+﻿@{
+    ViewBag.Title = "视频详情";
+    Layout = "~/Areas/Mobile/Views/Shared/_Layout.cshtml";
+}
+    <div class="top-blank"></div>
+    <div class="wx-containe">
+        <div class="advBanner">
+            <div id="module_1">
+                <div class="swiper-wrapper">
+                    <div class="two swiper-slide">
+                        <video id="video" style="height:200px;">
+                            <source src="/Mobile/Goods/FileStream" />
+                        </video>
+                    </div>
+                </div>
+                <div class="swiper-pagination"></div>
+            </div>
+        </div>
+        @*<div class="proinfo-wrap">
+            <div class="pro-parameter cl">
+                <div class="pro-pri fl"><span>￥<em class="num">159</em></span></div>
+                <div class="pro-time fl">生产周期<em class="num">11</em>天</div>
+                <div class="pro-share fr"><a href="javascript:;"><i class="icon iconfont">&#xe60a;</i></a></div>
+            </div>
+            <div class="pro-biaoti">产品标题产品标题产品标题产品标题产品标题</div>
+            <div class="pro-description">
+                描述：<span>高档高档大气上档次的商品个战士高档大气上档次的商品高档大气上档次的商品个战士个战高档大气上档次的商品个战士士高档大气上档次的商品个战士大气上档次的商品个战士</span>
+            </div>
+            <div class="pro-operat"><a href="javascript:;"><img src="images/zan.png" /></a><a href="pingjia.html"><img src="images/ping.png" /></a><a href="javascript:;"><img src="images/shang.png" /></a></div>
+            <div class="zan-box">
+                <span>赞了</span>
+                <div class="zan-list">
+                    <a href="javascript:;"><img src="images/touxiang.png" /></a>
+                    <a href="javascript:;"><img src="images/touxiang.png" /></a>
+                    <a href="javascript:;"><img src="images/touxiang.png" /></a>
+                    <a href="javascript:;"><img src="images/touxiang.png" /></a>
+                    <a href="javascript:;"><img src="images/touxiang.png" /></a>
+                    <a href="javascript:;"><img src="images/touxiang.png" /></a>
+                    <a href="javascript:;"><img src="images/touxiang.png" /></a>
+                </div>
+                <a href="wolai.html" class="link-mr"><i class="icon iconfont">&#xe62a;</i></a>
+            </div>
+            <div class="others-look">
+                <div class="tit"><span>大家都看了</span></div>
+                <div class="con">
+                    <ul>
+                        <li><a href="proinfo.html"><img src="upload/banner1.jpg" /></a></li>
+                        <li><a href="proinfo.html"><img src="upload/proimg.jpg" /></a></li>
+                        <li><a href="proinfo.html"><img src="upload/proimg.jpg" /></a></li>
+                        <li><a href="proinfo.html"><img src="upload/proimg.jpg" /></a></li>
+                        <li><a href="proinfo.html"><img src="upload/proimg.jpg" /></a></li>
+                        <li><a href="proinfo.html"><img src="upload/proimg.jpg" /></a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="process">
+                <div class="fl">定制流程：</div>
+                <div class="fr">
+                    <span><i class="icon iconfont">&#xe615;</i>下单</span>
+                    <span><i class="icon iconfont">&#xe606;</i>设计</span>
+                    <span><i class="icon iconfont">&#xe61d;</i>制作</span>
+                    <span><i class="icon iconfont">&#xe62d;</i>发货</span>
+                    <span><i class="icon iconfont">&#xe61b;</i>评价</span>
+                </div>
+            </div>
+        </div>*@
+    </div>
+    <div class="ft-blank"></div>
+<script>
+    var Media = document.getElementById("video");
+    Media.controls = true;//是否显示进度条(默认true)
+ //   Media.poster = "/Images/2017-01/20170111170029783.gif";
+    Media.play(); //播放
+</script>

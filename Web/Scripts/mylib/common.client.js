@@ -81,9 +81,50 @@ function common() {
     }
 
 
+    /*
+    *前端页面通用ajax封装
+    * version:1.0.0
+    * author:汤台
+    */
+    function Ajax(url, data, callback, er_callback, async) {
+        $.ajax({
+            url: url,
+            data: data,
+            type: 'POST',
+            dataType: 'json',
+            async: (async == null) ? true : async,
+            success: function (r) {
+                if (r.success) {
+                    callback(r);
+                }
+                else {
+                    if (er_callback) {
+                        er_callback(r);//手动提示错误
+                    }
+                    else {
+                        //默认错误提示
+                        alert("操作失败!");
+                    }
+                }
+            },
+            // jqXHR 是经过jQuery封装的XMLHttpRequest对象
+            // textStatus 可能为null、 'timeout（超时）'、 'error（错误）'、 'abort(中止)'和'parsererror（解析错误)'等
+            // errorMsg 是错误信息字符串(响应状态的文本描述部分，例如'Not Found'或'Internal Server Error')
+            error: function (jqXHR, textStatus, errorMsg) {
+                switch (jqXHR.status) {
+                    case 404: f.alert('链接地址错误!', null, 'error'); break;
+                    case 500: f.alert('服务器内部错误!', null, 'error'); break;
+                    default: f.alert(jqXHR.status + ":" + jqXHR.statusText, null, 'error');
+                }
+            }
+        });
+    }
+        
+
     return {
         check: check,//验证对象
-        string:string
+        string: string,
+        Ajax:Ajax
     }
 
 }

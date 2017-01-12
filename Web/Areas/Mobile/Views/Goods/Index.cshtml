@@ -1,0 +1,61 @@
+﻿@{
+    ViewBag.Title = "视频专区";
+    Layout = "~/Areas/Mobile/Views/Shared/_Layout.cshtml";
+}
+  <div class="top-blank"></div>
+    <div class="wx-container sublist-bj">
+        <div class="subjectpro-list">
+            <div class="small-img">
+                <ul id="GoodsList">
+                    @*<li>
+                        <div class="probox">
+                            <div class="img"><a href="proinfo.html"><img src="upload/list-b-small-01.jpg" /></a></div>
+                            <div class="tab txt-center">
+                                <div class="font1_6" style="font-size:0.6rem;margin-top:20px;">女士运动鞋主标题fdsfsdfdsffddfsfds</div>
+                                <div class="font1_6 red"></div>
+                            </div>
+                        </div>
+                    </li>*@   
+                </ul>
+            </div>
+        </div>
+    </div>
+ <div class="ft-blank"></div>
+<script src="~/Scripts/plug-in/SlideSlidePages.js"></script>
+ <script type="text/javascript">
+     $(function () {
+         domin.InitGodos();
+     });
+
+     var domin = (function (obj) { return obj; }(new function () {
+
+         //初始化商品列表
+         function InitGodos() {
+                //滑动加载
+             $.SlidePages({
+                 url: '/Mobile/Goods/List',
+                 sort:'dInsertTime',
+                 callback: function (res) {
+                     var html = [];
+                     $(res.rows).each(function () {
+                         html.push('<li>');
+                         html.push('<div class="probox">');
+                         html.push('<div class="img"><a href="/Mobile/Goods/Detail?ID=' + this.ID + '"><img src="' + this.sPicturePath + '" /></a></div>');
+                         html.push('<div class="tab txt-center">');
+                         html.push('<div class="font1_6" style="font-size:0.6rem;margin-top:20px;">' + this.sGoodsName + '</div>');
+                         html.push('<div class="font1_6 red"></div>');
+                         html.push('</div>');
+                         html.push('</div>');
+                         html.push('</li>');
+                     });
+                     $('#GoodsList').append(html.join(''));
+                 }
+             });
+         }
+
+         return {
+             InitGodos:InitGodos
+         }
+     }));
+ </script>
+

@@ -1,0 +1,40 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta http-equiv="Cache-Control" content="max-age=180">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <meta http-equiv="x-dns-prefetch-control" content="on">
+
+    <link href="~/Areas/Mobile/Content/font/iconfont.css" rel="stylesheet" />
+    <link href="~/Areas/Mobile/Content/css/swiper.min.css" rel="stylesheet" />
+    <link href="~/Areas/Mobile/Content/css/basestyle.css" rel="stylesheet" />
+    <link href="~/Areas/Mobile/Content/css/common.css" rel="stylesheet" />
+    <link href="~/Areas/Mobile/Content/css/style.css" rel="stylesheet" />
+
+    <script src="~/Areas/Mobile/Content/js/jquery-1.8.3.min.js"></script>
+    <script src="~/Areas/Mobile/Content/js/common.js"></script>
+    <script src="~/Areas/Mobile/Content/js/swiper.min.js"></script>
+
+    <script src="~/Scripts/mylib/common.client.js"></script>
+    <title>@ViewBag.Title</title>
+</head>
+<body>
+    <div class="wx-top">
+        <div class="top-title">@ViewBag.Title</div>
+    </div>
+
+   @RenderBody()
+    <!--footer-->
+    <div class="wx-footer2 tab">
+        <a href="index.html" class="active"><i class="icon-v2 fbh"></i><p>发布会</p></a>
+        <a href="guang.html" class=""><i class="icon-v2 guang"></i><p>逛</p></a>
+        <a href="maimaiquan.html" class=""><i class="icon-v2 mmq"></i><p>买卖圈</p></a>
+        <a href="wode.html" class=""><i class="icon-v2 wo"></i><p>我</p></a>
+    </div>
+</body>
+</html>

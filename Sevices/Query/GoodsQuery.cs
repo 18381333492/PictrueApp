@@ -49,5 +49,15 @@ namespace Sevices
             return query.db.Goods.Find(ID);
         }
 
+
+        /// <summary>
+        /// 获取首页图片
+        /// </summary>
+        /// <returns></returns>
+        public List<Goods> GetIndexGoodsPicture()
+        {
+            return query.db.Goods.OrderByDescending(m => m.dInsertTime).Take(10).ToList();
+        }
+
     }
 }
