@@ -22,5 +22,6 @@ namespace EFModel
         public System.DateTime dInsertTime { get; set; }
         public bool bIsDeleted { get; set; }
         public System.Guid sGoodsCategoryId { get; set; }
+        public string sGoodsDetail { get; set; }
     }
 }

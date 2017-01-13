@@ -41,6 +41,7 @@
           <Property Name="dInsertTime" Type="datetime" Nullable="false" />
           <Property Name="bIsDeleted" Type="bit" Nullable="false" />
           <Property Name="sGoodsCategoryId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="sGoodsDetail" Type="nvarchar(max)" Nullable="false" />
         </EntityType>
         <EntityType Name="GoodsCategory">
           <Key>
@@ -148,6 +149,7 @@
           <Property Name="dInsertTime" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="bIsDeleted" Type="Boolean" Nullable="false" />
           <Property Name="sGoodsCategoryId" Type="Guid" Nullable="false" />
+          <Property Name="sGoodsDetail" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="GoodsCategory">
           <Key>
@@ -250,6 +252,7 @@
           <EntitySetMapping Name="Goods">
             <EntityTypeMapping TypeName="PictrueAppModel.Goods">
               <MappingFragment StoreEntitySet="Goods">
+                <ScalarProperty Name="sGoodsDetail" ColumnName="sGoodsDetail" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="sGoodsName" ColumnName="sGoodsName" />
                 <ScalarProperty Name="sPicturePath" ColumnName="sPicturePath" />

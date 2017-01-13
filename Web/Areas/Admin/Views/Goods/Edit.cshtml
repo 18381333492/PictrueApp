@@ -8,14 +8,14 @@
 <table class="gridtable">
     <tr>
         <td>图片分类</td>
-        <td>
+        <td colspan="3">
             <input class="easyui-combobox" name="sGoodsCategoryId" value="@Model.sGoodsCategoryId"
                    data-options="valueField:'id',textField:'text',required:true,url:'/Admin/GoodsCategory/GetAllGoodsCategory?bIsAdd=0'" />
         </td>
     </tr>
     <tr>
         <td>图片名称</td>
-        <td>
+        <td colspan="3">
             <input class="easyui-textbox" name="sGoodsName" value="@Model.sGoodsName" />
         </td>
     </tr>
@@ -25,12 +25,16 @@
             <div id="sPicturePath"></div>
             <input type="hidden" name="sPicturePath" value="@Model.sPicturePath" />
         </td>
-    </tr>
-    <tr>
-        <td>上传动态图片(可不传)</td>
+        <td>上传动态图片<br/>(可不传)</td>
         <td>
             <div id="sGifPicturePath"></div>
             <input type="hidden" name="sGifPicturePath" value="@Model.sGifPicturePath" />
+        </td>
+    </tr>
+    <tr>
+        <td>介绍</td>
+        <td colspan="3">
+            <textarea name="sGoodsDetail" style="width:280px;height:80px;line-height:20px;">@Model.sGoodsDetail</textarea>
         </td>
     </tr>
 </table>

@@ -143,6 +143,7 @@
     <Compile Include="Areas\Admin\Controllers\MenusController.cs" />
     <Compile Include="Areas\Admin\Controllers\GoodsController.cs" />
     <Compile Include="Areas\Admin\Controllers\UserController.cs" />
+    <Compile Include="Areas\Mobile\Controllers\PayController.cs" />
     <Compile Include="Areas\Mobile\Controllers\GoodsController.cs" />
     <Compile Include="Areas\Mobile\Controllers\HomeController.cs" />
     <Compile Include="Areas\Mobile\MobileAreaRegistration.cs" />
@@ -941,6 +942,8 @@
     <Content Include="Areas\Mobile\Views\Home\Index.cshtml" />
     <Content Include="Areas\Mobile\Views\Goods\Index.cshtml" />
     <Content Include="Areas\Mobile\Views\Goods\Detail.cshtml" />
+    <Content Include="Areas\Mobile\Views\Home\Person.cshtml" />
+    <Content Include="Areas\Mobile\Views\Shared\NoTop.cshtml" />
     <None Include="bundleconfig.json" />
     <Content Include="HandleProgram\PictureUpload.ashx" />
     <None Include="Scripts\jquery-1.12.4.intellisense.js" />

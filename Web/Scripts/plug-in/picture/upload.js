@@ -28,14 +28,15 @@ function upload() {
                 $(element).html("");
                 data = data.trim();
                 $(element).append(data);//追加html
-
-                //设置图片的大小
-                $(element).find("img").attr("style", "width:" + defaults.width + "px;height:" + defaults.height + "px;");
                      //初始化图片路径
                 if($(element).next().val()!=""){
                     $(element).find("img").attr("src", $(element).next().val())
                 }
+                    //设置图片的大小
+                $(element).find("img").height(defaults.height);
+                $(element).find("img").width(defaults.height);
                 bingEvent();
+
         });
     }
 

@@ -36,12 +36,12 @@
 .subjectpro-list .tab{margin:0rem 0;}
 .subjectpro-list::before,.subjectpro-list::after,.subjectpro-list .small-img::before,.subjectpro-list .small-img::after,.proinfo-wrap::after,.proinfo-wrap::before{content:""; clear:both; display:table;}
 .subjectpro-list a{display:block;}
-.subjectpro-list img{width:100%;height:140px;}
+.subjectpro-list img{width:100%;height:150px;}
 .subjectpro-list .big-img{padding:1rem;}
 .subjectpro-list .big-img .img{border:1rem solid #fff;}
 .subjectpro-list .small-img{margin:0; padding-right:1rem;}
 .subjectpro-list .small-img li{float:left; width:50%;}
-.subjectpro-list .small-img li .probox{ margin:0.5rem 0 0 0.5rem; background:#fff; padding-bottom:1rem;height:160px}
+.subjectpro-list .small-img li .probox{ margin:0.5rem 0 0 0.5rem; background:#fff; padding-bottom:1rem;height:165px}
 
 /*--proinfo--*/
 .proinfo-menu{position:absolute; right:0; top:0; width:5rem; height:4.4rem; line-height:4.4rem; color:#fff;  text-align:center; z-index:100;}
@@ -56,8 +56,8 @@
 .proinfo-menu .down-list .close img{width:3rem; height:3rem; margin:0 auto;}
 
 .proinfo-wrap{background:#fff; padding:0 1rem 1rem 1rem;}
-.pro-parameter{padding:1rem 0; border-bottom:0.1rem solid #e8e8e8;}
-.pro-parameter .pro-pri{color:#fe3500; font-size:2.4rem; line-height:35px;}
+.pro-parameter{padding:0.5rem 0; border-bottom:0.1rem solid #e8e8e8;}
+.pro-parameter .pro-pri{color:#fe3500; font-size:1.6rem; line-height:25px;}
 .pro-parameter .pro-pri span{font-family:"Microsoft YaHei";}
 .pro-parameter .pro-time{font-size:1.5rem; margin-left:2.5rem; line-height:37px;}
 .pro-parameter .pro-share{position:relative; width:4rem; text-align:center;}
@@ -511,7 +511,7 @@
 .fb-sec-time{width:50%; margin:0 auto; text-align:center;}
 
 /*评论*/
-.comment-ipt{width:100%; min-height:3rem; overflow:hidden; resize:none;}
+.comment-ipt{width:100%;height:1.5rem; overflow:hidden; resize:none;}
 .commentBox{margin:0; padding:1rem; background:#fff;}
 .commentList{border-bottom:1px solid #efefef; padding:1rem 0 0 6rem; position:relative;}
 .commentList .pic{width:5rem; position:absolute; left:0; top:1rem;}
@@ -521,8 +521,8 @@
 .commentTxt .huifu a{display:block; padding:0.4rem 0;  color:#09C;}
 .commentTxt .huifutxt{display:none;}
 .comment-word{border:1px solid #efefef; overflow:hidden; padding:0.5rem; margin-bottom:1rem;}
-.comment-word .com-btn{margin:0; text-align:right; margin-top:0.5rem;}
-.comment-word .com-btn a.tj{display:inline-block; float:right; border-radius:0.2rem; padding:0.2rem 0.5rem; background:#6DD1EB; color:#fff; font-size:1.2rem;}
+.comment-word .com-btn{margin:0; text-align:right; margin-top:0rem;}
+.comment-word .com-btn a.tj{display:inline-block; float:right; border-radius:0.2rem; padding:0.2rem 0.5rem; color:#fff; font-size:1.2rem;}
 
 /*发现与匠人工坊*/
 .craftsmen{margin:0 0 1rem 0; background:#fff; padding:1rem 0;}

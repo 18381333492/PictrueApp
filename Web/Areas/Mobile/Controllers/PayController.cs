@@ -5,31 +5,28 @@ using System.Web;
 using System.Web.Mvc;
 using Web.App_Start;
 using Sevices;
+using EFModel.MyModels;
+using System.IO;
 
 namespace Web.Areas.Mobile.Controllers
 {
-    public class HomeController : MobileBaseController<GoodsService>
+    /// <summary>
+    /// 支付页面
+    /// </summary>
+    public class PayController : MobileBaseController<GoodsService>
     {
         //
-        // GET: /Mobile/Home/
+        // GET: /Mobile/Pay/
 
         /// <summary>
-        /// 首页
+        /// 商品列表展示页
         /// </summary>
         /// <returns></returns>
         public ActionResult Index()
         {
-            return View(_server.GetIndexGoodsPicture());
-        }
-
-
-        /// <summary>
-        /// 个人中心
-        /// </summary>
-        /// <returns></returns>
-        public ActionResult Person()
-        {
             return View();
         }
+
+        
     }
 }

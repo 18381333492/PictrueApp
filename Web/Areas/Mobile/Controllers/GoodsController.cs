@@ -38,9 +38,9 @@ namespace Web.Areas.Mobile.Controllers
         /// </summary>
         /// <param name="ID"></param>
         /// <returns></returns>
-        public ActionResult Detail()
+        public ActionResult Detail(Guid ID)
         {
-            return View();
+            return View(_server.Get(ID));
         }
 
 
@@ -54,6 +54,18 @@ namespace Web.Areas.Mobile.Controllers
             FileStream fs = new FileStream(AppDomain.CurrentDomain.BaseDirectory+ "Images\\2017-01\\20170111170029783.gif",FileMode.Open,FileAccess.Read);
 
             return File(fs, "image/gif");
+        }
+
+
+        /// <summary>
+        /// 根据商品ID获取评论数据
+        /// </summary>
+        /// <param name="sGoodsId"></param>
+        /// <returns></returns>
+        public ActionResult GetCommentListBysGoodsId(PageInfo info, Guid sGoodsId)
+        {
+            var domin = Resolve<CommentService>();
+            return  Content(domin.GetList(info, sGoodsId));
         }
     }
 }

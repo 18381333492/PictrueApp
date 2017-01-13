@@ -2,73 +2,90 @@
     ViewBag.Title = "视频详情";
     Layout = "~/Areas/Mobile/Views/Shared/_Layout.cshtml";
 }
+@using EFModel;
+@model Goods
     <div class="top-blank"></div>
     <div class="wx-containe">
         <div class="advBanner">
             <div id="module_1">
                 <div class="swiper-wrapper">
-                    <div class="two swiper-slide">
-                        <video id="video" style="height:200px;">
-                            <source src="/Mobile/Goods/FileStream" />
-                        </video>
+                    <div class="two swiper-slide" style="background-color:black;height:206px;width:100%">
+                        <img src="@Model.sPicturePath" style="height:206px;width:100%;display:none"  />
                     </div>
                 </div>
                 <div class="swiper-pagination"></div>
             </div>
         </div>
-        @*<div class="proinfo-wrap">
+        <div class="proinfo-wrap">
             <div class="pro-parameter cl">
-                <div class="pro-pri fl"><span>￥<em class="num">159</em></span></div>
-                <div class="pro-time fl">生产周期<em class="num">11</em>天</div>
-                <div class="pro-share fr"><a href="javascript:;"><i class="icon iconfont">&#xe60a;</i></a></div>
+                <div class="pro-pri fl"><span>片名:@Model.sGoodsName</span></div>
             </div>
-            <div class="pro-biaoti">产品标题产品标题产品标题产品标题产品标题</div>
             <div class="pro-description">
-                描述：<span>高档高档大气上档次的商品个战士高档大气上档次的商品高档大气上档次的商品个战士个战高档大气上档次的商品个战士士高档大气上档次的商品个战士大气上档次的商品个战士</span>
+                描述：<span>@Model.sGoodsDetail</span>
             </div>
-            <div class="pro-operat"><a href="javascript:;"><img src="images/zan.png" /></a><a href="pingjia.html"><img src="images/ping.png" /></a><a href="javascript:;"><img src="images/shang.png" /></a></div>
-            <div class="zan-box">
-                <span>赞了</span>
-                <div class="zan-list">
-                    <a href="javascript:;"><img src="images/touxiang.png" /></a>
-                    <a href="javascript:;"><img src="images/touxiang.png" /></a>
-                    <a href="javascript:;"><img src="images/touxiang.png" /></a>
-                    <a href="javascript:;"><img src="images/touxiang.png" /></a>
-                    <a href="javascript:;"><img src="images/touxiang.png" /></a>
-                    <a href="javascript:;"><img src="images/touxiang.png" /></a>
-                    <a href="javascript:;"><img src="images/touxiang.png" /></a>
+            <div class="pro-parameter cl">
+                评论
+            </div>
+            <div id="commentList">
+            @*<div class="commentList">
+                <div class="pic"><img src="/Areas/Mobile/Content/images/touxiang.png" /></div>
+                <div class="commentTxt">
+                    <div class="tab"><span class="fr grey_s">2015-10-16</span><span class="fl font1_6 blue_s">高冷大叔</span></div>
+                    <div class="tab">评论：<span>感觉不错感觉不错啊感觉不错啊感觉不错啊感觉不错啊感觉不错啊感觉不错啊啊</span></div>
                 </div>
-                <a href="wolai.html" class="link-mr"><i class="icon iconfont">&#xe62a;</i></a>
+            </div>*@
+            
+           </div>
+            <div class="comment-word">
+                <div><textarea class="comment-ipt" placeholder="我也来点评几句...."></textarea></div>
+                <div class="com-btn tab"><a href="javascript:;" class="tj" style="background:#6DD1EB">提交评论</a></div>
             </div>
-            <div class="others-look">
-                <div class="tit"><span>大家都看了</span></div>
-                <div class="con">
-                    <ul>
-                        <li><a href="proinfo.html"><img src="upload/banner1.jpg" /></a></li>
-                        <li><a href="proinfo.html"><img src="upload/proimg.jpg" /></a></li>
-                        <li><a href="proinfo.html"><img src="upload/proimg.jpg" /></a></li>
-                        <li><a href="proinfo.html"><img src="upload/proimg.jpg" /></a></li>
-                        <li><a href="proinfo.html"><img src="upload/proimg.jpg" /></a></li>
-                        <li><a href="proinfo.html"><img src="upload/proimg.jpg" /></a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="process">
-                <div class="fl">定制流程：</div>
-                <div class="fr">
-                    <span><i class="icon iconfont">&#xe615;</i>下单</span>
-                    <span><i class="icon iconfont">&#xe606;</i>设计</span>
-                    <span><i class="icon iconfont">&#xe61d;</i>制作</span>
-                    <span><i class="icon iconfont">&#xe62d;</i>发货</span>
-                    <span><i class="icon iconfont">&#xe61b;</i>评价</span>
-                </div>
-            </div>
-        </div>*@
+        </div>
     </div>
     <div class="ft-blank"></div>
-<script>
-    var Media = document.getElementById("video");
-    Media.controls = true;//是否显示进度条(默认true)
- //   Media.poster = "/Images/2017-01/20170111170029783.gif";
-    Media.play(); //播放
+<script src="~/Scripts/plug-in/SlideSlidePages.js"></script>
+<script type="text/javascript">
+    $(function () {
+        var sGoodsId = '@Model.ID';
+        domin.InitCommentData(sGoodsId);
+        domin.bindEvent();
+    });
+
+    var domin = (function (obj) { return obj; }(new function () {
+
+        //初始化评论数据
+        function InitCommentData(sGoodsId) {
+            $.SlidePages({
+                url: '/Mobile/Goods/GetCommentListBysGoodsId?sGoodsId=' + sGoodsId,
+                sort: 'dInserTime',
+                callback: function (res) {
+                    $('#commentList').html('');
+                    var html = [];
+                    $(res.rows).each(function () {
+                        html.push('<div class="commentList">');
+                        html.push('<div class="pic"><img src="' + this.sCommentHeadPic + '" /></div>');
+                        html.push('<div class="commentTxt">');
+                        html.push('<div class="tab"><span class="fr grey_s">2015-10-16</span><span class="fl font1_6 blue_s">' + this.sCommentName + '</span></div>');
+                        html.push('<div class="tab">评论：<span>' + this.sContens + '</span></div>');
+                        html.push('</div>');
+                        html.push('</div>');
+                    });
+                    $('#commentList').append(html.join(''));
+                }
+            })
+        }
+
+        //绑定事件
+        function bindEvent() {
+            $('.tj').on("click", function () {
+
+            });
+        }
+
+
+        return {
+            InitCommentData: InitCommentData,
+            bindEvent: bindEvent
+        }
+    }));
 </script>

@@ -38,11 +38,12 @@
                  callback: function (res) {
                      var html = [];
                      $(res.rows).each(function () {
+                         if (this.sGoodsName.length > 12) this.sGoodsName = this.sGoodsName.substring(0, 11) + "..";
                          html.push('<li>');
                          html.push('<div class="probox">');
                          html.push('<div class="img"><a href="/Mobile/Goods/Detail?ID=' + this.ID + '"><img src="' + this.sPicturePath + '" /></a></div>');
                          html.push('<div class="tab txt-center">');
-                         html.push('<div class="font1_6" style="font-size:0.6rem;margin-top:20px;">' + this.sGoodsName + '</div>');
+                         html.push('<div class="font1_6" style="font-size:1.4rem;margin-top:5px;">' + this.sGoodsName + '</div>');
                          html.push('<div class="font1_6 red"></div>');
                          html.push('</div>');
                          html.push('</div>');
