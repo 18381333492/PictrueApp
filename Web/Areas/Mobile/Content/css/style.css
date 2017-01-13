@@ -515,7 +515,7 @@
 .commentBox{margin:0; padding:1rem; background:#fff;}
 .commentList{border-bottom:1px solid #efefef; padding:1rem 0 0 6rem; position:relative;}
 .commentList .pic{width:5rem; position:absolute; left:0; top:1rem;}
-.commentList .pic img{width:100%; border-radius:50%;}
+.commentList .pic img{width:100%; border-radius:50%;height:36px;}
 .commentTxt{margin:0; width:100%;  min-height:5rem;}
 .commentTxt .tab{margin:0.3rem 0;}
 .commentTxt .huifu a{display:block; padding:0.4rem 0;  color:#09C;}

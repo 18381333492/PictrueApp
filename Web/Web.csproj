@@ -213,6 +213,7 @@
     <Content Include="Areas\Admin\Content\Login\css\Login.css" />
     <Content Include="Areas\Admin\Content\Login\demo.html" />
     <Content Include="Areas\Admin\Content\Login\images\1.jpg" />
+    <Content Include="Areas\Admin\Content\Login\images\37.jpg" />
     <Content Include="Areas\Admin\js\Home\Index.js" />
     <Content Include="Areas\Admin\js\Home\Login.js" />
     <Content Include="Content\kindeditor\examples\auto-height.html" />
