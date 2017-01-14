@@ -8,12 +8,14 @@
           @Html.Partial("~/Areas/Admin/Views/Shared/_Button.cshtml")
      </form>
 </div>
+<script src="~/Scripts/plug-in/picture/upload.js"></script>
 <script type="text/javascript">
     $(function () {
         var f = new eui();
         var d = new extend();
         var goodscategory = f.config("Admin", "GoodsCategory");
-        
+
+        goodscategory.pictrue = new upload();
         /*!
         * method:新增商品分类
         * author:[汤台]
@@ -33,7 +35,9 @@
                         goodscategory.button.enable();
                     });
                 }
-            },400,150);
+            }, 400, 300, function () {
+                goodscategory.pictrue.create("sPath");
+            });
         }
 
         /*!
@@ -54,7 +58,9 @@
                                 goodscategory.grid.datagrid('reload');
                             });
                         }
-                    }, 400, 150);
+                    }, 400, 300, function () {
+                        goodscategory.pictrue.create("sPath");
+                    });
             }
             else {
                 f.alert("请选择一条数据进行操作!");

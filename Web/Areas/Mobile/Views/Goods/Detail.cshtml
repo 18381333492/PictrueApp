@@ -24,16 +24,21 @@
                 描述：<span>@Model.sGoodsDetail</span>
             </div>
             <div class="pro-parameter cl">
-                评论
+                狼友热评
             </div>
-            <div id="commentList">
             @*<div class="commentList">
                 <div class="pic"><img src="/Areas/Mobile/Content/images/touxiang.png" /></div>
                 <div class="commentTxt">
-                    <div class="tab"><span class="fr grey_s">2015-10-16</span><span class="fl font1_6 blue_s">高冷大叔</span></div>
+                    <div class="tab">
+                    <span class="fr" style="background-image:url('/Areas/Mobile/Content/upload/zan.png');width:20px;height:20px;background-repeat:no-repeat;background-size:100%100%;"></span>
+                     <span class="fr" style="height:24px;line-height: 5px;color:red">12346</span>
+                     <span class="fl font1_6 blue_s">高冷大叔</span>
+                    </div>
                     <div class="tab">评论：<span>感觉不错感觉不错啊感觉不错啊感觉不错啊感觉不错啊感觉不错啊感觉不错啊啊</span></div>
                 </div>
             </div>*@
+            <div id="commentList">
+          
             
            </div>
             <div class="comment-word">
@@ -65,7 +70,11 @@
                         html.push('<div class="commentList">');
                         html.push('<div class="pic"><img src="' + this.sCommentHeadPic + '" /></div>');
                         html.push('<div class="commentTxt">');
-                        html.push('<div class="tab"><span class="fr grey_s">2015-10-16</span><span class="fl font1_6 blue_s">' + this.sCommentName + '</span></div>');
+                        html.push('<div class="tab">');
+                        html.push(' <span class="fr" style="background-image:url(/Areas/Mobile/Content/upload/zan.png);width:20px;height:20px;background-repeat:norepeat;background-size:100%100%;"></span>');
+                        html.push('<span class="fr" style="height:24px;line-height: 5px;color:red">' + this.iCommentCount + '</span>');
+                        html.push('<span class="fl font1_6 blue_s">' + this.sCommentName + '</span>');
+                        html.push('</div>');
                         html.push('<div class="tab">评论：<span>' + this.sContens + '</span></div>');
                         html.push('</div>');
                         html.push('</div>');

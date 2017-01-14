@@ -7,6 +7,12 @@ window.confirm = function (msg) {
     confirm(msg);
 }
 
+//弹出支付框
+window.alertPay = function () {
+
+}
+
+
 function common() {
 
     /**前端验证对象**/

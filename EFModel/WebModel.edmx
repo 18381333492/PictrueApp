@@ -51,6 +51,7 @@
           <Property Name="GoodsCatetoryName" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="dInsertTime" Type="datetime" Nullable="false" />
           <Property Name="bIsDeleted" Type="bit" Nullable="false" />
+          <Property Name="sPath" Type="nvarchar" MaxLength="255" Nullable="false" />
         </EntityType>
         <EntityType Name="Menus">
           <Key>
@@ -159,6 +160,7 @@
           <Property Name="GoodsCatetoryName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="dInsertTime" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="bIsDeleted" Type="Boolean" Nullable="false" />
+          <Property Name="sPath" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="Menus">
           <Key>
@@ -267,6 +269,7 @@
           <EntitySetMapping Name="GoodsCategory">
             <EntityTypeMapping TypeName="PictrueAppModel.GoodsCategory">
               <MappingFragment StoreEntitySet="GoodsCategory">
+                <ScalarProperty Name="sPath" ColumnName="sPath" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="GoodsCatetoryName" ColumnName="GoodsCatetoryName" />
                 <ScalarProperty Name="dInsertTime" ColumnName="dInsertTime" />

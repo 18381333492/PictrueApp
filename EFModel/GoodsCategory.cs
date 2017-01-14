@@ -18,5 +18,6 @@ namespace EFModel
         public string GoodsCatetoryName { get; set; }
         public System.DateTime dInsertTime { get; set; }
         public bool bIsDeleted { get; set; }
+        public string sPath { get; set; }
     }
 }

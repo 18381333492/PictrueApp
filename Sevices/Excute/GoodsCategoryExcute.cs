@@ -24,6 +24,8 @@ namespace Sevices
             item.ID = Guid.NewGuid();
             item.dInsertTime = DateTime.Now;
             item.bIsDeleted = false;
+            if (string.IsNullOrEmpty(item.sPath))
+                item.sPath = string.Empty;
             excute.Add<GoodsCategory>(item);
             return excute.SaveChange(this,"Add");      
         }
@@ -36,7 +38,9 @@ namespace Sevices
         [Log("商品分类", Operate.编辑)]
         public int Edit(GoodsCategory item)
         {
-             excute.Edit<GoodsCategory>(item);
+            if (string.IsNullOrEmpty(item.sPath))
+                item.sPath = string.Empty;
+            excute.Edit<GoodsCategory>(item);
              return excute.SaveChange(this, "Edit");
         }
 
