@@ -24,6 +24,7 @@
 <script src="~/Scripts/plug-in/SlideSlidePages.js"></script>
  <script type="text/javascript">
      $(function () {
+         $('.tab a').eq(2).addClass("active").siblings().removeClass('active');
          domin.InitGodos();
      });
 
@@ -38,7 +39,7 @@
                  callback: function (res) {
                      var html = [];
                      $(res.rows).each(function () {
-                         if (this.sGoodsName.length > 12) this.sGoodsName = this.sGoodsName.substring(0, 11) + "..";
+                         if (this.sGoodsName.length > 10) this.sGoodsName = this.sGoodsName.substring(0, 9) + "..";
                          html.push('<li>');
                          html.push('<div class="probox">');
                          html.push('<div class="img"><a href="/Mobile/Goods/Detail?ID=' + this.ID + '"><img src="' + this.sPicturePath + '" /></a></div>');

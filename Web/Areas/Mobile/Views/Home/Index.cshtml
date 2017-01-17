@@ -39,6 +39,9 @@
     <div class="ft-blank"></div>
 <script>
     $(function () {
+
+        $('.tab a').eq(0).addClass("active").siblings().removeClass('active');
+
         var page_wt = $(".egc-fabuhui-list").width();
         var swiper = new Swiper('.swiper-container', {
             pagination: '.swiper-pagination',

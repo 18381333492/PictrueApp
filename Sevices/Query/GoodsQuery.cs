@@ -59,5 +59,23 @@ namespace Sevices
             return query.db.Goods.OrderByDescending(m => m.dInsertTime).Take(10).ToList();
         }
 
+
+        /// <summary>
+        /// 获取所有的分类
+        /// </summary>
+        /// <returns></returns>
+        public List<Dictionary<string,object>> GetAllCategory()
+        {
+            StringBuilder sSql = new StringBuilder();
+
+            sSql.Append(@"SELECT A.GoodsCatetoryName,A.sPath,COUNT(B.ID) as iCount FROM GoodsCategory AS A 
+                                        LEFT JOIN Goods AS B 
+                                        ON A.ID=B.sGoodsCategoryId AND A.bIsDeleted=0          
+                                        AND B.bIsDeleted=0 
+                                        group by A.ID,A.GoodsCatetoryName,A.sPath having A.ID!='366B2C87-38CE-4EC4-A742-1E889C117299'");
+
+            return  query.QueryByDapper(sSql.ToString(),null);
+
+        }
     }
 }

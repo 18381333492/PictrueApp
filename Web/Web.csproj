@@ -216,7 +216,29 @@
     <Content Include="Areas\Admin\Content\Login\images\37.jpg" />
     <Content Include="Areas\Admin\js\Home\Index.js" />
     <Content Include="Areas\Admin\js\Home\Login.js" />
+    <Content Include="Areas\Mobile\Content\css\bootstrap.css" />
+    <Content Include="Areas\Mobile\Content\css\style4.css" />
+    <Content Include="Areas\Mobile\Content\fonts\demo.css" />
+    <Content Include="Areas\Mobile\Content\fonts\demo_fontclass.html" />
+    <Content Include="Areas\Mobile\Content\fonts\demo_symbol.html" />
+    <Content Include="Areas\Mobile\Content\fonts\demo_unicode.html" />
+    <Content Include="Areas\Mobile\Content\fonts\iconfont.css" />
+    <Content Include="Areas\Mobile\Content\fonts\iconfont.js" />
+    <Content Include="Areas\Mobile\Content\fonts\iconfont.svg" />
+    <Content Include="Areas\Mobile\Content\img\139-150525111033-50.jpg" />
+    <Content Include="Areas\Mobile\Content\img\139-150RP92539.jpg" />
+    <Content Include="Areas\Mobile\Content\img\14.jpg" />
+    <Content Include="Areas\Mobile\Content\img\bg.png" />
     <Content Include="Areas\Mobile\Content\upload\zan.png" />
+    <Content Include="Areas\Mobile\layer\layer.js" />
+    <Content Include="Areas\Mobile\layer\mobile\layer.js" />
+    <Content Include="Areas\Mobile\layer\mobile\need\layer.css" />
+    <Content Include="Areas\Mobile\layer\skin\default\icon-ext.png" />
+    <Content Include="Areas\Mobile\layer\skin\default\icon.png" />
+    <Content Include="Areas\Mobile\layer\skin\default\layer.css" />
+    <Content Include="Areas\Mobile\layer\skin\default\loading-0.gif" />
+    <Content Include="Areas\Mobile\layer\skin\default\loading-1.gif" />
+    <Content Include="Areas\Mobile\layer\skin\default\loading-2.gif" />
     <Content Include="Content\kindeditor\examples\auto-height.html" />
     <Content Include="Content\kindeditor\examples\colorpicker.html" />
     <Content Include="Content\kindeditor\examples\custom-plugin.html" />
@@ -946,6 +968,11 @@
     <Content Include="Areas\Mobile\Views\Goods\Detail.cshtml" />
     <Content Include="Areas\Mobile\Views\Home\Person.cshtml" />
     <Content Include="Areas\Mobile\Views\Shared\NoTop.cshtml" />
+    <Content Include="Areas\Mobile\Views\Goods\CateGoryList.cshtml" />
+    <Content Include="Areas\Mobile\Content\img\.DS_Store" />
+    <Content Include="Areas\Mobile\Content\fonts\iconfont.eot" />
+    <Content Include="Areas\Mobile\Content\fonts\iconfont.ttf" />
+    <Content Include="Areas\Mobile\Content\fonts\iconfont.woff" />
     <None Include="bundleconfig.json" />
     <Content Include="HandleProgram\PictureUpload.ashx" />
     <None Include="Scripts\jquery-1.12.4.intellisense.js" />
@@ -1019,6 +1046,7 @@
     <Folder Include="ErrorLogs\ApplicationError\" />
     <Folder Include="ErrorLogs\Error\" />
     <Folder Include="Scripts\skins\" />
+    <Folder Include="未命名文件夹\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

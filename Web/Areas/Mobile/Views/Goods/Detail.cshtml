@@ -18,12 +18,17 @@
         </div>
         <div class="proinfo-wrap">
             <div class="pro-parameter cl">
-                <div class="pro-pri fl"><span>片名:@Model.sGoodsName</span></div>
+                <div class="pro-pri fl" style="color:#4873bc"><span>片名:@Model.sGoodsName</span></div>
             </div>
-            <div class="pro-description">
-                描述：<span>@Model.sGoodsDetail</span>
+            <div class="pro-description" style="margin-top:0.5rem;">
+                <p style="font-weight:bold;color:crimson">猜你喜欢</p>
+             
+                <img  style="width:32%;float:left;height:150px;margin-right:4px"src="~/Areas/Mobile/Content/img/14.jpg" />
+                <img  style="width:32%;float:left; height:150px;margin-right:4px" src="~/Areas/Mobile/Content/img/14.jpg" />
+                <img  style="width:32%;float:left;height:150px;" src="~/Areas/Mobile/Content/img/14.jpg" />
+                @*描述：<span>@Model.sGoodsDetail</span>*@
             </div>
-            <div class="pro-parameter cl">
+            <div class="pro-parameter cl" style="color:crimson;font-weight:bold">
                 狼友热评
             </div>
             @*<div class="commentList">

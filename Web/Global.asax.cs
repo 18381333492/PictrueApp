@@ -43,17 +43,17 @@ namespace Web
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        protected void Application_Error(object sender,EventArgs e)
-        {       
-            //Exception ex = Server.GetLastError();
-            //if(ex is HttpException)
-            //{
-            //    if((ex as HttpException).GetHttpCode() == (int)HttpStatusCode.NotFound)
-            //    {
-            //        ;
-            //    }
-            //}
-        }
+        //protected void Application_Error(object sender,EventArgs e)
+        //{       
+        //    //Exception ex = Server.GetLastError();
+        //    //if(ex is HttpException)
+        //    //{
+        //    //    if((ex as HttpException).GetHttpCode() == (int)HttpStatusCode.NotFound)
+        //    //    {
+        //    //        ;
+        //    //    }
+        //    //}
+        //}
 
 
         /// <summary>

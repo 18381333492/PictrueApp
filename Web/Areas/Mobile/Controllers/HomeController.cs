@@ -29,6 +29,8 @@ namespace Web.Areas.Mobile.Controllers
         /// <returns></returns>
         public ActionResult Person()
         {
+            ViewBag.UserId = Guid.NewGuid().ToString().ToLower().Substring(0, 10);
+            ViewBag.Password = new Random().Next(100000, 999999);
             return View();
         }
     }

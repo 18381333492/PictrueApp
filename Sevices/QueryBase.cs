@@ -75,5 +75,19 @@ namespace Sevices
             return job.ToString();
         }
 
+
+        /// <summary>
+        /// dapper查询
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="sql"></param>
+        /// <param name="param"></param>
+        /// <returns></returns>
+        public List<Dictionary<string,object>> QueryByDapper(string sql, object param)
+        {
+            DapperHelper.QueryBase dapper = new DapperHelper.QueryBase();//Dapper查询
+            var entry = dapper.Query(sql, param);
+            return entry;
+        }
     }
 }

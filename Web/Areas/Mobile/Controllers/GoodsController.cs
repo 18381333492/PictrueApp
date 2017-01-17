@@ -67,5 +67,15 @@ namespace Web.Areas.Mobile.Controllers
             var domin = Resolve<CommentService>();
             return  Content(domin.GetList(info, sGoodsId));
         }
+
+
+        /// <summary>
+        /// 分类列表页面
+        /// </summary>
+        /// <returns></returns>
+        public ActionResult CateGoryList()
+        {
+            return View(_server.GetAllCategory());
+        }
     }
 }

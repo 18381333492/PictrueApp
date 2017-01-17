@@ -31,5 +31,25 @@ namespace DapperHelper
 
             
         }
+
+
+        /// <summary>
+        /// 查询数据
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="sSql"></param>
+        /// <param name="parameter"></param>
+        /// <returns></returns>
+        public List<Dictionary<string, object>> Query(string sSql, object parameter)
+        {
+            using (SqlConnection conn = GetSqlConnection())
+            {
+                var ret = conn.Query(sSql, parameter, null, true, null, CommandType.Text)
+                    .Select(m =>((IDictionary<string, object>)m).ToDictionary(pi => pi.Key, pi => pi.Value))
+                                .ToList();
+                CloseConnect(conn);
+                return ret;
+            }
+        }
     }
 }
