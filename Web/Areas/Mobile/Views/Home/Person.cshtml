@@ -6,8 +6,8 @@
         <div class="user-info">
             <div class="t-pic"><a href="huantouxiang.html"><img src="/Areas/Mobile/Content/images/touxiang2.png" /></a></div>
             <div class="t-info">
-                <div class="name" style="color:white;height:17px;">帐号：<h2 class="account">美丽的姑娘</h2><i class="icon iconfont">&#xe614;</i></div>
-                <div style="color:white">密码：<h2 class="clientpassword">美丽的姑娘</h2><i class="icon iconfont">&#xe614;</i></div>
+                <div class="name" style="color:white;height:17px;">帐号：<h2 class="account"></h2><i class="icon iconfont">&#xe614;</i></div>
+                <div style="color:white">密码：<h2 class="clientpassword"></h2><i class="icon iconfont">&#xe614;</i></div>
             </div>
         </div>
     </div>
@@ -64,12 +64,20 @@
 
 
         function Pay() {
+
+            var html = [];
+            html.push('<input id="commit" type="button" value="支付" />');
+            
             layer.open({
-                title:' ',
+                btn: '开通会员',
+                btnAlign: 'c',
+                yes:function(){
+                    alert(6);
+                },
                 type: 1,
                 skin: 'layui-layer-rim', //加上边框
                 area: ['250px', '350px'], //宽高
-                content: 'html内容hghhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh',
+                content: html.join(''),
                 success: function () {
                     $('.layui-layer-title').remove();
                 }

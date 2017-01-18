@@ -1,6 +1,9 @@
 ﻿@{
     ViewBag.Title = "视频详情";
     Layout = "~/Areas/Mobile/Views/Shared/_Layout.cshtml";
+
+    List<Goods> list = ViewBag.GoodsList as List<Goods>;
+    var i = 0;
 }
 @using EFModel;
 @model Goods
@@ -22,10 +25,18 @@
             </div>
             <div class="pro-description" style="margin-top:0.5rem;">
                 <p style="font-weight:bold;color:crimson">猜你喜欢</p>
-             
-                <img  style="width:32%;float:left;height:150px;margin-right:4px"src="~/Areas/Mobile/Content/img/14.jpg" />
-                <img  style="width:32%;float:left; height:150px;margin-right:4px" src="~/Areas/Mobile/Content/img/14.jpg" />
-                <img  style="width:32%;float:left;height:150px;" src="~/Areas/Mobile/Content/img/14.jpg" />
+                @foreach (var m in list)
+                {
+                    if (i == 2)
+                    {
+                        <img style="width:32%;float:left;height:150px;" src="@m.sPicturePath" />
+                    }
+                    else
+                    {
+                        <img  style="width:32%;float:left;height:150px;margin-right:4px"src="@m.sPicturePath" />
+                    }
+                    i++;
+                }
                 @*描述：<span>@Model.sGoodsDetail</span>*@
             </div>
             <div class="pro-parameter cl" style="color:crimson;font-weight:bold">

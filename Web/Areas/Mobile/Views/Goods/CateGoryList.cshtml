@@ -5,11 +5,11 @@
 using System.Collections.Generic;
 @model  List<Dictionary<string,object>>
 <link href="~/Areas/Mobile/Content/css/style4.css" rel="stylesheet" />
-<div class="top-blank"></div>
+<div class="top-blank" style="height:3rem"></div>
     @foreach (var m in Model)
     {
-    <div class="img_box" style="background:url(@(m["sPath"].ToString())) no-repeat center;">
-        <div style="padding: 2rem 0">
+    <div class="img_box" style="background:url(@(m["sPath"].ToString())) no-repeat center;  background-size: cover;">
+        <div style="padding: 3.5rem 0">
             <div class="img_box_content">
                 <hr style="left: 0">
                 <span class="content_title">@m["GoodsCatetoryName"].ToString()</span>
@@ -20,7 +20,7 @@ using System.Collections.Generic;
                 }
                 else
                 {
-                <p class="click_number">跟新@(m["iCount"])部</p>
+                <p class="click_number">更新@(m["iCount"])部</p>
                 }
             </div>
         </div>

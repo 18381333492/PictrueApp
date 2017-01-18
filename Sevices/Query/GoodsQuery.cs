@@ -49,6 +49,22 @@ namespace Sevices
             return query.db.Goods.Find(ID);
         }
 
+        /// <summary>
+        /// 获取商品分类一样的的商品
+        /// </summary>
+        /// <returns></returns>
+        public List<Goods> GetTopThree(Guid sGoodsId)
+        {
+            var good = query.db.Goods.Find(sGoodsId);
+
+            var sGoodsCategoryId = good.sGoodsCategoryId;
+
+            var data = (from m in query.db.Goods
+                       where m.bIsDeleted ==false && m.sGoodsCategoryId == sGoodsCategoryId &&m.ID!= sGoodsId
+                        orderby m.dInsertTime descending
+                       select m).Take(3);
+            return data.ToList();
+        }
 
         /// <summary>
         /// 获取首页图片
@@ -68,7 +84,7 @@ namespace Sevices
         {
             StringBuilder sSql = new StringBuilder();
 
-            sSql.Append(@"SELECT A.GoodsCatetoryName,A.sPath,COUNT(B.ID) as iCount FROM GoodsCategory AS A 
+            sSql.Append(@"SELECT A.GoodsCatetoryName,A.sPath,COUNT(B.ID) as iCount FROM (SELECT * FROM  GoodsCategory WHERE bIsDeleted=0) AS A 
                                         LEFT JOIN Goods AS B 
                                         ON A.ID=B.sGoodsCategoryId AND A.bIsDeleted=0          
                                         AND B.bIsDeleted=0 

@@ -1,7 +1,7 @@
 ﻿
-window.alert = function (msg) {
-    alert(msg);
-}
+//window.alert = function (msg) {
+//    alert(msg);
+//}
 
 window.confirm = function (msg) {
     confirm(msg);

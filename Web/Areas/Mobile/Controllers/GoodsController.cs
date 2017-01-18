@@ -40,6 +40,7 @@ namespace Web.Areas.Mobile.Controllers
         /// <returns></returns>
         public ActionResult Detail(Guid ID)
         {
+            ViewBag.GoodsList = _server.GetTopThree(ID);
             return View(_server.Get(ID));
         }
 
