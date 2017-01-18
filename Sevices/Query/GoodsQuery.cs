@@ -40,6 +40,33 @@ namespace Sevices
         }
 
         /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="Info"></param>
+        /// <param name="sGoodsCategoryId"></param>
+        /// <param name="sKeyWord"></param>
+        /// <returns></returns>
+        public string GetListByClient(PageInfo Info, string sGoodsCategoryId, string sKeyWord)
+        {
+            StringBuilder sSql = new StringBuilder();
+            sSql.Append(@"SELECT A.*,B.GoodsCatetoryName FROM [Goods] AS A 
+                                        LEFT JOIN GoodsCategory AS B
+                                        ON A.sGoodsCategoryId=B.ID
+                                        WHERE A.bIsDeleted=0 AND B.ID!='366B2C87-38CE-4EC4-A742-1E889C117299'");
+            if (!string.IsNullOrEmpty(sGoodsCategoryId))
+            {//分类查询
+                sSql.AppendFormat(" AND B.ID='{0}'", sGoodsCategoryId);
+            }
+            if (!string.IsNullOrEmpty(sKeyWord))
+            {//名称模糊查询
+
+                sSql.AppendFormat(" AND A.sGoodsName LIKE '%{0}%'", sKeyWord);
+            }
+            return query.QueryPage(sSql.ToString(), Info, null);
+        }
+
+
+        /// <summary>
         /// 获取单个商品
         /// </summary>
         /// <param name="ID">主键ID</param>
@@ -72,7 +99,8 @@ namespace Sevices
         /// <returns></returns>
         public List<Goods> GetIndexGoodsPicture()
         {
-            return query.db.Goods.OrderByDescending(m => m.dInsertTime).Take(10).ToList();
+            return query.db.Goods.Where(m => m.sGoodsCategoryId.ToString().ToUpper()=="366B2C87-38CE-4EC4-A742-1E889C117299")
+                .OrderByDescending(m => m.dInsertTime).Take(10).ToList();
         }
 
 

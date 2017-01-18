@@ -26,6 +26,8 @@ namespace Sevices
             item.bIsDeleted = false;
             if (string.IsNullOrEmpty(item.sGifPicturePath))
                 item.sGifPicturePath = string.Empty;
+            if (string.IsNullOrEmpty(item.sGoodsDetail))
+                item.sGoodsDetail = string.Empty;
             excute.Add<Goods>(item);
             return excute.SaveChange(this,"Add");      
         }
@@ -40,6 +42,8 @@ namespace Sevices
         {
             if (string.IsNullOrEmpty(item.sGifPicturePath))
                 item.sGifPicturePath = string.Empty;
+            if (string.IsNullOrEmpty(item.sGoodsDetail))
+                item.sGoodsDetail = string.Empty;
             excute.Edit<Goods>(item);
              return excute.SaveChange(this, "Edit");
         }

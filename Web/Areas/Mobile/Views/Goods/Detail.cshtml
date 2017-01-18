@@ -24,20 +24,26 @@
                 <div class="pro-pri fl" style="color:#4873bc"><span>片名:@Model.sGoodsName</span></div>
             </div>
             <div class="pro-description" style="margin-top:0.5rem;">
-                <p style="font-weight:bold;color:crimson">猜你喜欢</p>
-                @foreach (var m in list)
+                @if (Model.sGoodsCategoryId.ToString().ToUpper() != "366B2C87-38CE-4EC4-A742-1E889C117299")
                 {
-                    if (i == 2)
+                    <p style="font-weight:bold;color:crimson">猜你喜欢</p>
+                    foreach (var m in list)
                     {
+                        if (i == 2)
+                        {
                         <img style="width:32%;float:left;height:150px;" src="@m.sPicturePath" />
-                    }
-                    else
-                    {
+                        }
+                        else
+                        {
                         <img  style="width:32%;float:left;height:150px;margin-right:4px"src="@m.sPicturePath" />
+                        }
+                        i++;
                     }
-                    i++;
                 }
-                @*描述：<span>@Model.sGoodsDetail</span>*@
+                else
+                {
+                    @:描述：<span>@Model.sGoodsDetail</span>
+                }
             </div>
             <div class="pro-parameter cl" style="color:crimson;font-weight:bold">
                 狼友热评

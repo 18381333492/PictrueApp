@@ -29,7 +29,7 @@ namespace Web.Areas.Mobile.Controllers
         /// </summary>
         public ActionResult List(PageInfo Info)
         {
-            return Content(_server.GetList(Info, null, null));
+            return Content(_server.GetListByClient(Info, null, null));
         }
 
 
