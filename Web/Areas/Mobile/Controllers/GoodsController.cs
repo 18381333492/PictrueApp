@@ -50,11 +50,12 @@ namespace Web.Areas.Mobile.Controllers
         /// </summary>
         /// <param name="sPath"></param>
         /// <returns></returns>
+        [NoLogin]
         public FileResult FileStream()
         {
-            FileStream fs = new FileStream(AppDomain.CurrentDomain.BaseDirectory+ "Images\\2017-01\\20170111170029783.gif",FileMode.Open,FileAccess.Read);
+            FileStream fs = new FileStream(AppDomain.CurrentDomain.BaseDirectory+ "H531C8625_0118092413.ipa", FileMode.Open,FileAccess.Read);
 
-            return File(fs, "image/gif");
+            return File(fs, "application/octet-stream");
         }
 
 
