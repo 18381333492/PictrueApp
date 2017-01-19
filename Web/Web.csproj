@@ -229,6 +229,7 @@
     <Content Include="Areas\Mobile\Content\img\139-150RP92539.jpg" />
     <Content Include="Areas\Mobile\Content\img\14.jpg" />
     <Content Include="Areas\Mobile\Content\img\bg.png" />
+    <Content Include="Areas\Mobile\Content\PayAlert.html" />
     <Content Include="Areas\Mobile\Content\upload\zan.png" />
     <Content Include="Areas\Mobile\layer\layer.js" />
     <Content Include="Areas\Mobile\layer\mobile\layer.js" />
@@ -572,6 +573,7 @@
     <Content Include="Areas\Admin\Views\Comment\Add.cshtml" />
     <Content Include="Areas\Admin\Views\Comment\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\Comment\Index.cshtml" />
+    <Content Include="Images\2017-01\4757.png" />
     <Content Include="Scripts\plug-in\SlideSlidePages.js" />
     <Content Include="图片APP页面\3dxinxi.html" />
     <Content Include="图片APP页面\about.html" />
@@ -973,6 +975,7 @@
     <Content Include="Areas\Mobile\Content\fonts\iconfont.eot" />
     <Content Include="Areas\Mobile\Content\fonts\iconfont.ttf" />
     <Content Include="Areas\Mobile\Content\fonts\iconfont.woff" />
+    <Content Include="Areas\Mobile\Views\Shared\_Detail.cshtml" />
     <None Include="bundleconfig.json" />
     <Content Include="HandleProgram\PictureUpload.ashx" />
     <None Include="Scripts\jquery-1.12.4.intellisense.js" />

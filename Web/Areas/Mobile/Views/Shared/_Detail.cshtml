@@ -9,7 +9,8 @@
     <meta name="format-detection" content="telephone=no">
     <meta http-equiv="x-dns-prefetch-control" content="on">
     <link href="~/Areas/Mobile/Content/fonts/iconfont.css" rel="stylesheet" />
-    
+   
+   
     <link href="~/Areas/Mobile/Content/css/swiper.min.css" rel="stylesheet" />
     <link href="~/Areas/Mobile/Content/css/basestyle.css" rel="stylesheet" />
     <link href="~/Areas/Mobile/Content/css/common.css" rel="stylesheet" />
@@ -30,10 +31,11 @@
                     var maskPanelHtml = '<div class="msgtipbar animated flipInX"style="bottom:100px;font-weight: bold;left: 0;position:fixed;text-align:center;width:100%;z-index:100;opacity:0.7;"><tip style="background: #333333 none repeat scroll 0 0;border-radius: 2px;color: #fff;display: inline-block;line-height: 30px;padding: 0 10px;"></tip></div>';
                     $("body").append(maskPanelHtml);
                     $(".msgtipbar").show();
-                    $(".msgtipbar tip").text("亲,在点击就要离开我了哦!");
+                    $(".msgtipbar tip").text("亲,再点击就要离开我了哦!");
                     setTimeout(function () {
                         $(".msgtipbar").hide();
-                    }, 4000);
+                        $(".msgtipbar").remove();
+                    }, 3000);
                 }
                 else {
                     plus.runtime.quit();//退出客户端
@@ -44,14 +46,11 @@
     <title>@ViewBag.Title</title>
 </head>
 <body>
-  
+    <div class="wx-top">
+        <div class="top-title">@ViewBag.Title</div>
+    </div>
+
    @RenderBody()
     <!--footer-->
-    <div class="wx-footer2 tab">
-        <a href="/Mobile/Home/Index" class="active"><i class="iconfont icon-tiyanzhongxin"></i><p>体验区</p></a>
-        <a href="/Mobile/Goods/CateGoryList" class=""><i class="iconfont icon-pindao"></i><p>频道</p></a>
-        <a href="/Mobile/Goods/Index" class=""><i class="iconfont icon-shachepian1"></i><p>片库</p></a>
-        <a href="/Mobile/Home/Person" class=""><i class="iconfont icon-wo1"></i><p>我</p></a>
-    </div>
 </body>
 </html>

@@ -1,6 +1,6 @@
 ﻿@{
     ViewBag.Title = "视频详情";
-    Layout = "~/Areas/Mobile/Views/Shared/_Layout.cshtml";
+    Layout = "~/Areas/Mobile/Views/Shared/_Detail.cshtml";
 
     List<Goods> list = ViewBag.GoodsList as List<Goods>;
     var i = 0;
@@ -102,6 +102,7 @@
                         html.push('</div>');
                     });
                     $('#commentList').append(html.join(''));
+
                 }
             })
         }
@@ -109,7 +110,15 @@
         //绑定事件
         function bindEvent() {
             $('.tj').on("click", function () {
+                alertPay();
+            });
+    
+            $('.two img').on("click", function () {
+                alertPay();
+            });
 
+            $('.pro-description img').on("click", function () {
+                alertPay();
             });
         }
 

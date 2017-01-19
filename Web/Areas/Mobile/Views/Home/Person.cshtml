@@ -21,7 +21,6 @@
         </div>
     </div>
     <div class="ft-blank"></div>
-<script src="~/Areas/Mobile/layer/layer.js"></script>
 <script type="text/javascript">
     $(function () {
         $('.tab a').eq(3).addClass("active").siblings().removeClass('active');
@@ -64,25 +63,7 @@
 
 
         function Pay() {
-
-            var html = [];
-            html.push('<input id="commit" type="button" value="支付" />');
-            
-            layer.open({
-                btn: '开通会员',
-                btnAlign: 'c',
-                yes:function(){
-                    alert(6);
-                },
-                type: 1,
-                skin: 'layui-layer-rim', //加上边框
-                area: ['250px', '350px'], //宽高
-                content: html.join(''),
-                success: function () {
-                    $('.layui-layer-title').remove();
-                },
-                scrollbar: false
-            });
+            alertPay();
         }
         
 
