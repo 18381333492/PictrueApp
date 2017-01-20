@@ -9,31 +9,32 @@ window.confirm = function (msg) {
 
 //弹出支付框
 window.alertPay = function () {
- 
-    var html = [];
-    html.push('<img style="width:250px;height:150px;" src="/Images/2017-01/4757.png" />');
-    html.push('<div style="width:190px;height:50px;margin:20px auto;background-color:#fff;">');
-    html.push('<p style="line-height:25px;font-size:14px;text-align:center;color:#333;">黄金会员</p>');
-    html.push('<p style="line-height:25px;font-size:12px;text-align:center;color:#333;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">电影电影电影电影电影电影</p>');
-    html.push('</div>');
+    if ($('.layui-layer-page').length == 0) {
+        var html = [];
+        html.push('<img style="width:250px;height:150px;" src="/Images/2017-01/4757.png" />');
+        html.push('<div style="width:230px;height:50px;margin:20px auto;background-color:#fff;">');
+        html.push('<p style="line-height:25px;font-size:16px;text-align:center;color:#333;">开通黄金会员(原39现28)</p>');
+        html.push('<p style="line-height:25px;font-size:12px;text-align:center;color:#333;white-space:nowrap;">畅想百部成人体验电影大片</p>');
+        html.push('</div>');
 
-    layer.open({
-        scrollbar: false,
-        btn: '开通会员',
-        btnAlign: 'c',
-        yes: function () {
-            alert(6);
-        },
-        type: 1,
-        skin: 'layui-layer-rim', //加上边框
-        area: ['250px', '350px'], //宽高
-        content: html.join(''),
-        success: function () {
-            $('.layui-layer-content').height(300);
-            $('.layui-layer-title').remove();
-            $('.layui-layer-page').css("background-color", "#FF7575");
-        },
-    });
+        layer.open({
+            scrollbar: false,
+            btn: '微信支付',
+            btnAlign: 'c',
+            yes: function () {
+                alert(6);
+            },
+            type: 1,
+            skin: 'layui-layer-rim', //加上边框
+            area: ['250px', '350px'], //宽高
+            content: html.join(''),
+            success: function () {
+                $('.layui-layer-content').height(300);
+                $('.layui-layer-title').remove();
+                $('.layui-layer-page').css("background-color", "#FF7575");
+            },
+        });
+    }
 }
 
 

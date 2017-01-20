@@ -24,6 +24,7 @@
     <script type="text/javascript">
         //监听安卓返回键
         document.addEventListener('plusready', function () {
+            var i = 0;
             //console.log("所有plus api都应该在此事件发生后调用，否则会出现plus is undefined。"
             plus.key.addEventListener("backbutton", function () {
                 if ($(".msgtipbar").length == 0) {
@@ -36,7 +37,11 @@
                     }, 4000);
                 }
                 else {
-                    plus.runtime.quit();//退出客户端
+                    i++;
+                    if (i == 1)
+                        alertPay();
+                    else
+                        plus.runtime.quit();//退出客户端
                 }
             });
         });

@@ -1,5 +1,5 @@
 ﻿@{
-    ViewBag.Title = "视频专区";
+    ViewBag.Title = "片库";
     Layout = "~/Areas/Mobile/Views/Shared/_Layout.cshtml";
 }
   <div class="top-blank"></div>
@@ -7,22 +7,22 @@
         <div class="subjectpro-list">
             <div class="small-img">
                 <ul id="GoodsList">
-                    @*<li>
-                        <div class="probox" style="position:relative">
-                            <div class="img"><a href="proinfo.html">
-                                
+                    <li>
+                        @*<div class="probox">
+                            <div class="img" style="position:relative"><a href="proinfo.html">       
                                 <img src="upload/list-b-small-01.jpg" />
-                                                 <div style="position:absolute;width:auto;height:20px;right:0;top:1px;text-align:right;background-color:red;color:white">
+                                 <img src="~/Areas/Mobile/Content/img/play.ico" style="position:absolute; top: 50%; left: 50%; margin-left: -15px; margin-top: -15px;height:30px;width:30px;" />
+                                 <div style="position:absolute;width:auto;height:20px;right:0;top:1px;text-align:right;background-color:red;color:white">
                                                      高清
-                                                 </div>
+                                 </div>
                                 </a>
                             </div>
                             <div class="tab txt-center">
                                 <div class="font1_6" style="font-size:0.6rem;margin-top:20px;">女士运动鞋主标题fdsfsdfdsffddfsfds</div>
                                 <div class="font1_6 red"></div>
                             </div>
-                        </div>
-                    </li>*@   
+                        </div>*@
+                    </li>   
                 </ul>
             </div>
         </div>
@@ -53,13 +53,13 @@
                          if (order > 5) {
                              order = 10 - order;
                          }
-                         if (this.sGoodsName.length > 10) this.sGoodsName = this.sGoodsName.substring(0, 9) + "..";
                          html.push('<li>');
-                         html.push('<div class="probox" style="position:relative">');
-                         html.push('<div class="img"><a href="/Mobile/Goods/Detail?ID=' + this.ID + '"><img src="' + this.sPicturePath + '" />');
+                         html.push('<div class="probox">');
+                         html.push('<div class="img" style="position:relative"><a href="/Mobile/Goods/Detail?ID=' + this.ID + '"><img src="' + this.sPicturePath + '" />');
+                         html.push('<img src="/Areas/Mobile/Content/img/ds.ico" style="position:absolute; top: 50%; left: 50%; margin-left: -15px; margin-top: -15px;height:30px;width:30px;" />')
                          html.push('<div style="position:absolute;width:auto;height:20px;right:0;top:0;text-align:right;background-color:red;color:white">'+name[order]+'</div></a></div>')
                          html.push('<div class="tab txt-center">');
-                         html.push('<div class="font1_6" style="font-size:1.4rem;margin-top:5px;">' + this.sGoodsName + '</div>');
+                         html.push('<div class="font1_6" style="font-size:1.4rem;margin-top:5px;overflow:hidden">' + this.sGoodsName + '</div>');
                          html.push('<div class="font1_6 red"></div>');
                          html.push('</div>');
                          html.push('</div>');

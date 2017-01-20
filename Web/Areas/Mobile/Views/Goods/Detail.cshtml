@@ -1,8 +1,8 @@
 ﻿@{
-    ViewBag.Title = "视频详情";
+    ViewBag.Title =Model.sGoodsName;
     Layout = "~/Areas/Mobile/Views/Shared/_Detail.cshtml";
 
-    List<Goods> list = ViewBag.GoodsList as List<Goods>;
+    List<LikePicture> list = ViewBag.GoodsList as List<LikePicture>;
     var i = 0;
 }
 @using EFModel;
@@ -12,9 +12,22 @@
         <div class="advBanner">
             <div id="module_1">
                 <div class="swiper-wrapper">
-                    <div class="two swiper-slide" style="background-color:black;height:206px;width:100%">
+            @if (Model.sGoodsCategoryId.ToString().ToUpper() == "366B2C87-38CE-4EC4-A742-1E889C117299")
+            {
+                  <div style="background-color:black">
+                    <video id="video" height="206">
+                        手机版本太低,不支持播放
+                        <source src="/Mobile/Goods/FileStream?sPath=@Model.sGifPicturePath" />
+                    </video>
+                </div>
+            }
+            else
+            {
+                    <div class="two swiper-slide" style="background-color:black;height:206px;width:100%;position:relative" >
                         <img src="@Model.sPicturePath" style="height:206px;width:100%;"  />
+                        <img src="~/Areas/Mobile/Content/img/ds.ico"style="position:absolute; top: 50%; left: 50%; margin-left: -25px; margin-top: -25px;height:50px;width:50px;" />
                     </div>
+                 }
                 </div>
                 <div class="swiper-pagination"></div>
             </div>
@@ -31,11 +44,11 @@
                     {
                         if (i == 2)
                         {
-                        <img style="width:32%;float:left;height:150px;" src="@m.sPicturePath" />
+                        <img style="width:32%;float:left;height:150px;" src="@m.sPicture" />
                         }
                         else
                         {
-                        <img  style="width:32%;float:left;height:150px;margin-right:4px"src="@m.sPicturePath" />
+                        <img  style="width:32%;float:left;height:150px;margin-right:4px"src="@m.sPicture" />
                         }
                         i++;
                     }
@@ -76,6 +89,25 @@
         var sGoodsId = '@Model.ID';
         domin.InitCommentData(sGoodsId);
         domin.bindEvent();
+
+        if ($('#video').length != 0) {
+            var Media = document.getElementById("video");
+            var width = $('.swiper-wrapper').width();
+            Media.width = width;
+            Media.controls = true;
+            var eventTester = function (e) {
+                Media.addEventListener(e, function () {
+                    var dd = Media.currentTime;
+                    if (dd >= 20) {
+                        Media.currentTime = 0;
+                        Media.pause();
+                        alertPay();
+                    }
+                }, false);
+            }
+            eventTester("timeupdate");
+            Media.play();
+        }
     });
 
     var domin = (function (obj) { return obj; }(new function () {

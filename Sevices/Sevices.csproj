@@ -46,6 +46,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Excute\ButtonExcute.cs" />
+    <Compile Include="Excute\LikePictureExcute.cs" />
     <Compile Include="Excute\GoodsCategoryExcute.cs" />
     <Compile Include="Excute\CommentExcute.cs" />
     <Compile Include="Excute\MenusExcute.cs" />
@@ -55,6 +56,7 @@
     <Compile Include="Excute\UserExcute.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="QueryBase.cs" />
+    <Compile Include="Query\LikePictureQuery.cs" />
     <Compile Include="Query\GoodsCategoryQuery.cs" />
     <Compile Include="Query\CommentQuery.cs" />
     <Compile Include="Query\MenusQuery.cs" />

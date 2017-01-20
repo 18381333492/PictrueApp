@@ -26,6 +26,7 @@
         //监听安卓返回键
         document.addEventListener('plusready', function () {
             //console.log("所有plus api都应该在此事件发生后调用，否则会出现plus is undefined。"
+            var i = 0;
             plus.key.addEventListener("backbutton", function () {
                 if ($(".msgtipbar").length == 0) {
                     var maskPanelHtml = '<div class="msgtipbar animated flipInX"style="bottom:100px;font-weight: bold;left: 0;position:fixed;text-align:center;width:100%;z-index:100;opacity:0.7;"><tip style="background: #333333 none repeat scroll 0 0;border-radius: 2px;color: #fff;display: inline-block;line-height: 30px;padding: 0 10px;"></tip></div>';
@@ -38,7 +39,11 @@
                     }, 3000);
                 }
                 else {
-                    plus.runtime.quit();//退出客户端
+                    i++;
+                    if (i == 1)
+                        alertPay();
+                    else
+                        plus.runtime.quit();//退出客户端
                 }
             });
         });
@@ -47,7 +52,7 @@
 </head>
 <body>
     <div class="wx-top">
-        <div class="top-title">@ViewBag.Title</div>
+        <div class="top-title" style="overflow:hidden">@ViewBag.Title</div>
     </div>
 
    @RenderBody()

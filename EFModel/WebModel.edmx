@@ -53,6 +53,13 @@
           <Property Name="bIsDeleted" Type="bit" Nullable="false" />
           <Property Name="sPath" Type="nvarchar" MaxLength="255" Nullable="false" />
         </EntityType>
+        <EntityType Name="LikePicture">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="sPicture" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
         <EntityType Name="Menus">
           <Key>
             <PropertyRef Name="ID" />
@@ -105,6 +112,7 @@
           <EntitySet Name="Comment" EntityType="Self.Comment" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Goods" EntityType="Self.Goods" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="GoodsCategory" EntityType="Self.GoodsCategory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LikePicture" EntityType="Self.LikePicture" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Menus" EntityType="Self.Menus" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="OperateLog" EntityType="Self.OperateLog" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
@@ -218,7 +226,15 @@
           <EntitySet Name="OperateLog" EntityType="Self.OperateLog" />
           <EntitySet Name="Role" EntityType="Self.Role" />
           <EntitySet Name="User" EntityType="Self.User" />
+          <EntitySet Name="LikePicture" EntityType="PictrueAppModel.LikePicture" />
         </EntityContainer>
+        <EntityType Name="LikePicture">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Guid" Nullable="false" />
+          <Property Name="sPicture" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -325,6 +341,14 @@
                 <ScalarProperty Name="sRoleID" ColumnName="sRoleID" />
                 <ScalarProperty Name="bIsDeleted" ColumnName="bIsDeleted" />
                 <ScalarProperty Name="dInsertTime" ColumnName="dInsertTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LikePicture">
+            <EntityTypeMapping TypeName="PictrueAppModel.LikePicture">
+              <MappingFragment StoreEntitySet="LikePicture">
+                <ScalarProperty Name="sPicture" ColumnName="sPicture" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

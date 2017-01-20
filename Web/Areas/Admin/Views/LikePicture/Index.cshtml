@@ -1,0 +1,105 @@
+﻿@{
+    ViewBag.Title = "猜你喜欢";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+<table id="LikePicture"></table>
+<div id="LikePicture_toolbar" style="padding:5px;">
+    <form id="search">
+        @Html.Partial("~/Areas/Admin/Views/Shared/_Button.cshtml")
+    </form>
+</div>
+<script src="~/Scripts/plug-in/picture/upload.js"></script>
+<script type="text/javascript">
+    $(function () {
+        var f = new eui();
+        var d = new extend();
+        var likepciture = f.config("Admin", "LikePicture");
+
+        likepciture.pictrue = new upload();
+        /*!
+        * method:新增
+        * author:[汤台]
+        * version:[1.0.0]
+        */
+        likepciture.Insert.handle = function () {
+            var dialog = f.dialog(likepciture.route("Add"), "新增图片分类", function () {
+                if ($(likepciture.form.add).form("validate")) {
+                    likepciture.button.disable();
+                    var param = $(likepciture.form.add).serialize();
+                    f.post(likepciture.route("Insert"), param, function (res) {
+                        dialog.dialog("close");
+                        likepciture.grid.datagrid("reload");
+                    },
+                    function (r) {
+                        f.alert(r.info);
+                        likepciture.button.enable();
+                    });
+                }
+            }, 400, 300, function () {
+                likepciture.pictrue.create("sPicture",{ width:100,height:150,});
+            });
+        }
+
+        /*!
+        * method:编辑
+        * author:[汤台]
+        * version:[1.0.0]
+        */
+        likepciture.Update.handle = function () {
+            var select = likepciture.grid.datagrid('getSelections');
+            if (select.length) {
+                var dialog = f.dialog(likepciture.route('Edit') + "?ID=" + select[0].ID, '编辑菜单',
+                    function () {
+                        if ($(likepciture.form.edit).form('validate')) {
+                            likepciture.button.disable();
+                            var data = $(likepciture.form.edit).serialize();
+                            f.post(likepciture.route('Update'), data, function (res) {
+                                dialog.dialog('close');
+                                likepciture.grid.datagrid('reload');
+                            });
+                        }
+                    }, 400, 300, function () {
+                        likepciture.pictrue.create("sPicture", { width: 100, height: 150, });
+                    });
+            }
+            else {
+                f.alert("请选择一条数据进行操作!");
+            }
+        }
+
+        /*!
+        * method:绑定按钮事件
+        * author:[汤台]
+        * version:[1.0.0]
+        */
+        $(likepciture.toolbar)
+                .on('click', 'a[data-name=likepicture_add]', likepciture.Insert.handle)
+                .on('click', 'a[data-name=likepicture_edit]', likepciture.Update.handle)
+
+
+        /*!
+        * method:数据列表(datagrid)的绑定
+        * author:[汤台]
+        * version:[1.0.0]
+        */
+        likepciture.grid.datagrid({
+            fit:true,
+            url: likepciture.route('List'),
+            toolbar: likepciture.toolbar,
+            rownumbers:true,
+            striped: true,
+            pagination: true,
+            sortOrder: 'asc',//默认的排序
+            loadMsg: "正在加载...",
+            columns: [[
+                { field: '', checkbox: true, },
+                {
+                    field: 'sPicture', title: '图片分类名称', align: 'center', width: 250, formatter: function (value) {
+                        return "<div style='margin:auto;height:150px; width:95px'><img style='height:150px; width:95px;' src=" + value + "></div>";
+                    }
+                },
+            ]],
+        });
+    });
+
+</script>

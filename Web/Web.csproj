@@ -135,6 +135,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\ButtonController.cs" />
+    <Compile Include="Areas\Admin\Controllers\LikePictureController.cs" />
     <Compile Include="Areas\Admin\Controllers\GoodsCategoryController.cs" />
     <Compile Include="Areas\Admin\Controllers\CommentController.cs" />
     <Compile Include="Areas\Admin\Controllers\OperateLogController.cs" />
@@ -153,6 +154,9 @@
     <Compile Include="Controllers\TestController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="HandleProgram\Handler.ashx.cs">
+      <DependentUpon>Handler.ashx</DependentUpon>
     </Compile>
     <Compile Include="HandleProgram\PictureUpload.ashx.cs">
       <DependentUpon>PictureUpload.ashx</DependentUpon>
@@ -218,6 +222,8 @@
     <Content Include="Areas\Admin\js\Home\Login.js" />
     <Content Include="Areas\Mobile\Content\css\bootstrap.css" />
     <Content Include="Areas\Mobile\Content\css\style4.css" />
+    <Content Include="Areas\Mobile\Content\img\back.ico" />
+    <Content Include="Areas\Mobile\Content\img\ds.ico" />
     <Content Include="Areas\Mobile\Content\fonts\demo.css" />
     <Content Include="Areas\Mobile\Content\fonts\demo_fontclass.html" />
     <Content Include="Areas\Mobile\Content\fonts\demo_symbol.html" />
@@ -229,6 +235,7 @@
     <Content Include="Areas\Mobile\Content\img\139-150RP92539.jpg" />
     <Content Include="Areas\Mobile\Content\img\14.jpg" />
     <Content Include="Areas\Mobile\Content\img\bg.png" />
+    <Content Include="Areas\Mobile\Content\img\play.ico" />
     <Content Include="Areas\Mobile\Content\PayAlert.html" />
     <Content Include="Areas\Mobile\Content\upload\zan.png" />
     <Content Include="Areas\Mobile\layer\layer.js" />
@@ -976,8 +983,12 @@
     <Content Include="Areas\Mobile\Content\fonts\iconfont.ttf" />
     <Content Include="Areas\Mobile\Content\fonts\iconfont.woff" />
     <Content Include="Areas\Mobile\Views\Shared\_Detail.cshtml" />
+    <Content Include="Areas\Admin\Views\LikePicture\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\LikePicture\Add.cshtml" />
+    <Content Include="Areas\Admin\Views\LikePicture\Edit.cshtml" />
     <None Include="bundleconfig.json" />
     <Content Include="HandleProgram\PictureUpload.ashx" />
+    <Content Include="HandleProgram\Handler.ashx" />
     <None Include="Scripts\jquery-1.12.4.intellisense.js" />
     <Content Include="Scripts\jquery-1.12.4.js" />
     <Content Include="Scripts\jquery-1.12.4.min.js" />

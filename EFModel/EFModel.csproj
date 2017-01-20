@@ -64,6 +64,9 @@
     <Compile Include="GoodsCategory.cs">
       <DependentUpon>WebModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="LikePicture.cs">
+      <DependentUpon>WebModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Menus.cs">
       <DependentUpon>WebModel.tt</DependentUpon>
     </Compile>

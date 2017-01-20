@@ -40,7 +40,8 @@ namespace Web.Areas.Mobile.Controllers
         /// <returns></returns>
         public ActionResult Detail(Guid ID)
         {
-            ViewBag.GoodsList = _server.GetTopThree(ID);
+            var domin = Resolve<LikePictureService>();
+            ViewBag.GoodsList = domin.GetRandmThree();
             return View(_server.Get(ID));
         }
 
@@ -51,10 +52,9 @@ namespace Web.Areas.Mobile.Controllers
         /// <param name="sPath"></param>
         /// <returns></returns>
         [NoLogin]
-        public FileResult FileStream()
+        public FileResult FileStream(string sPath)
         {
-            FileStream fs = new FileStream(AppDomain.CurrentDomain.BaseDirectory+ "H531C8625_0118092413.ipa", FileMode.Open,FileAccess.Read);
-
+            FileStream fs = new FileStream(AppDomain.CurrentDomain.BaseDirectory+ sPath, FileMode.Open,FileAccess.Read);
             return File(fs, "application/octet-stream");
         }
 

@@ -40,26 +40,26 @@ namespace Web.HandleProgram
                         /*组装文件名*/
                         string sFileName = DateTime.Now.ToString("yyyyMMddHHmmssfff") + format;
 
-                        /*文件大小超出限制*/
-                        if (image.ContentLength > (_iMaxSize * 1024))
-                        {
-                            context.Response.Write(C_Json.toJson(new result()
-                            {
-                                error = 1,
-                                message = "文件超出大小限制2M!"
-                            }));
-                            return;
-                        }
-                        /*上传的文件后缀名格式错误*/
-                        if (!sExtension.Contains(format))
-                        {
-                            context.Response.Write(C_Json.toJson(new result()
-                            {
-                                error = 1,
-                                message = "上传的图片文件格式错误!"
-                            }));
-                            return;
-                        }
+                        ///*文件大小超出限制*/
+                        //if (image.ContentLength > (_iMaxSize * 1024))
+                        //{
+                        //    context.Response.Write(C_Json.toJson(new result()
+                        //    {
+                        //        error = 1,
+                        //        message = "文件超出大小限制2M!"
+                        //    }));
+                        //    return;
+                        //}
+                        ///*上传的文件后缀名格式错误*/
+                        //if (!sExtension.Contains(format))
+                        //{
+                        //    //context.Response.Write(C_Json.toJson(new result()
+                        //    //{
+                        //    //    error = 1,
+                        //    //    message = "上传的图片文件格式错误!"
+                        //    //}));
+                        //    //return;
+                        //}
                         /*保存图片到本地*/
                         image.SaveAs(sPath + sFileName);
                         context.Response.Write(C_Json.toJson(new result()

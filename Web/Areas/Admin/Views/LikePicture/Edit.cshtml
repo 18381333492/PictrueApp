@@ -1,0 +1,16 @@
+﻿
+
+@using EFModel;
+@model LikePicture
+<form id="edit_form">
+    <input name="ID" value="@Model.ID" type="hidden" />
+<table class="gridtable">
+    <tr>
+        <td>猜你喜欢图片上传</td>
+        <td>
+            <div id="sPicture"></div>
+            <input type="hidden" name="sPicture" value="@Model.sPicture" />
+        </td>
+    </tr>
+</table>
+</form>

@@ -1,9 +1,4 @@
 ﻿
-
-
-
-
-
 function upload() {
     
     var element;
@@ -34,7 +29,7 @@ function upload() {
                 }
                     //设置图片的大小
                 $(element).find("img").height(defaults.height);
-                $(element).find("img").width(defaults.height);
+                $(element).find("img").width(defaults.width);
                 bingEvent();
 
         });
