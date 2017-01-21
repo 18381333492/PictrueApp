@@ -37,31 +37,33 @@ body{
 .img_box_content{
     width: 150px;
     height: 60px;
-    border-right:  1px solid white;
-    border-left:  1px solid white;
-    border-bottom:  1px solid white;
+    border-right:  2px solid white;
+    border-left:  2px solid white;
+    border-bottom:  2px solid white;
     text-align: center;
     margin: 0 auto;
     position: relative;
+    color:red
     /*position: absolute;*/
 }
 .img_box_content hr{
     width: 10px;
     display: inline-block;
     position: absolute;
-    top: -0.6rem;
-    height: 1px;
+    top: -0.7rem;
+    height:2px;
     border: 0;
     background-color: white;
 
 }
 .click_number{
-    color: black;
+    color: white;
     top: -0.5rem;
     position: absolute;
     text-align: center;
     left: 0;
     width: 100%;
+    font-size: 16px;
 }
 .content_title{
     text-align: center;

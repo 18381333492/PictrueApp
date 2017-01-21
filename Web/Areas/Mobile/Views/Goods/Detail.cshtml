@@ -116,7 +116,7 @@
         function InitCommentData(sGoodsId) {
             $.SlidePages({
                 url: '/Mobile/Goods/GetCommentListBysGoodsId?sGoodsId=' + sGoodsId,
-                sort: 'dInserTime',
+                params:"sort=dInserTime",
                 callback: function (res) {
                     $('#commentList').html('');
                     var html = [];

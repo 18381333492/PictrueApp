@@ -222,8 +222,6 @@
     <Content Include="Areas\Admin\js\Home\Login.js" />
     <Content Include="Areas\Mobile\Content\css\bootstrap.css" />
     <Content Include="Areas\Mobile\Content\css\style4.css" />
-    <Content Include="Areas\Mobile\Content\img\back.ico" />
-    <Content Include="Areas\Mobile\Content\img\ds.ico" />
     <Content Include="Areas\Mobile\Content\fonts\demo.css" />
     <Content Include="Areas\Mobile\Content\fonts\demo_fontclass.html" />
     <Content Include="Areas\Mobile\Content\fonts\demo_symbol.html" />
@@ -231,6 +229,8 @@
     <Content Include="Areas\Mobile\Content\fonts\iconfont.css" />
     <Content Include="Areas\Mobile\Content\fonts\iconfont.js" />
     <Content Include="Areas\Mobile\Content\fonts\iconfont.svg" />
+    <Content Include="Areas\Mobile\Content\img\back.ico" />
+    <Content Include="Areas\Mobile\Content\img\ds.ico" />
     <Content Include="Areas\Mobile\Content\img\139-150525111033-50.jpg" />
     <Content Include="Areas\Mobile\Content\img\139-150RP92539.jpg" />
     <Content Include="Areas\Mobile\Content\img\14.jpg" />
@@ -979,13 +979,13 @@
     <Content Include="Areas\Mobile\Views\Shared\NoTop.cshtml" />
     <Content Include="Areas\Mobile\Views\Goods\CateGoryList.cshtml" />
     <Content Include="Areas\Mobile\Content\img\.DS_Store" />
-    <Content Include="Areas\Mobile\Content\fonts\iconfont.eot" />
-    <Content Include="Areas\Mobile\Content\fonts\iconfont.ttf" />
-    <Content Include="Areas\Mobile\Content\fonts\iconfont.woff" />
     <Content Include="Areas\Mobile\Views\Shared\_Detail.cshtml" />
     <Content Include="Areas\Admin\Views\LikePicture\Index.cshtml" />
     <Content Include="Areas\Admin\Views\LikePicture\Add.cshtml" />
     <Content Include="Areas\Admin\Views\LikePicture\Edit.cshtml" />
+    <Content Include="Areas\Mobile\Content\fonts\iconfont.eot" />
+    <Content Include="Areas\Mobile\Content\fonts\iconfont.ttf" />
+    <Content Include="Areas\Mobile\Content\fonts\iconfont.woff" />
     <None Include="bundleconfig.json" />
     <Content Include="HandleProgram\PictureUpload.ashx" />
     <Content Include="HandleProgram\Handler.ashx" />

@@ -11,25 +11,33 @@ window.confirm = function (msg) {
 window.alertPay = function () {
     if ($('.layui-layer-page').length == 0) {
         var html = [];
-        html.push('<img style="width:250px;height:150px;" src="/Images/2017-01/4757.png" />');
-        html.push('<div style="width:230px;height:50px;margin:20px auto;background-color:#fff;">');
-        html.push('<p style="line-height:25px;font-size:16px;text-align:center;color:#333;">开通黄金会员(原39现28)</p>');
+        html.push('<img style="width:300px;height:170px;" src="/Images/2017-01/4757.png" />');
+        html.push('<div style="width:280px;height:50px;margin:20px auto;background-color:#fff;position:relative;border-radius:4px;">');
+        html.push('<p style="line-height:25px;font-size:16px;text-align:center;color:orange; margin-left: 2.3rem;"><i class="iconfont icon-rank-2"  style="font-size:30px;color: orange;position: absolute;left: 6px;top: 12px;"></i>开通黄金会员(<span style="font-size:14px">原</span><span style="color:red;font-size:24px">39</span><span style="font-size:14px">现</span><span style="color:red;font-size:24px">28</span>)</p>');
         html.push('<p style="line-height:25px;font-size:12px;text-align:center;color:#333;white-space:nowrap;">畅想百部成人体验电影大片</p>');
+        html.push('</div>');
+        html.push('<div cla style="padding:0 28px; background-color: green;margin: 0px 30px;border-radius:30px;position:relative">');
+        html.push('<p style="padding:9px;color:white;text-align:center">微 信 支 付</p>');
+        html.push('<div style="padding: 19px;;color:green;position:absolute;left:-4px;background-color:white;border-radius:50%;top:0">');
+        html.push('<i class="iconfont  icon-weixin" style="position:absolute;top:-4px;left:3px; font-size: 30px;"></i>');
+        html.push('</div>');
+        html.push('</div>');
+        //支付宝支付
+        html.push('<div style="padding:0 28px; background-color: #3796de;margin: 10px 30px;border-radius:30px;position:relative;">');
+        html.push('<p style="padding:9px;color:white;text-align:center">支 付 宝 支 付</p>');
+        html.push('<div style="padding: 19px;position:absolute;left:-4px;background-color:white;border-radius:50%;top:0">');
+        html.push('<i class="iconfont icon-jikediancanicon23" style="position:absolute;top:-4px;left:3px; font-size: 30px;color: #3796de;"></i>');
+        html.push('</div>');
         html.push('</div>');
 
         layer.open({
             scrollbar: false,
-            btn: '微信支付',
-            btnAlign: 'c',
-            yes: function () {
-                alert(6);
-            },
             type: 1,
             skin: 'layui-layer-rim', //加上边框
-            area: ['250px', '350px'], //宽高
+            area: ['300px', '400px'], //宽高
             content: html.join(''),
             success: function () {
-                $('.layui-layer-content').height(300);
+                $('.layui-layer-content').height(350);
                 $('.layui-layer-title').remove();
                 $('.layui-layer-page').css("background-color", "#FF7575");
             },
