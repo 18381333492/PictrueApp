@@ -236,6 +236,7 @@
     <Content Include="Areas\Mobile\Content\img\14.jpg" />
     <Content Include="Areas\Mobile\Content\img\bg.png" />
     <Content Include="Areas\Mobile\Content\img\play.ico" />
+    <Content Include="Areas\Mobile\Content\js\gifffer.min.js" />
     <Content Include="Areas\Mobile\Content\PayAlert.html" />
     <Content Include="Areas\Mobile\Content\upload\zan.png" />
     <Content Include="Areas\Mobile\layer\layer.js" />
