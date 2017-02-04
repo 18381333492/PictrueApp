@@ -42,39 +42,41 @@ namespace Sevices
         /// <returns></returns>
         public List<LikePicture> GetRandmThree()
         {
-            var data = query.db.LikePicture.ToList();
-            if (data.Count <= 3)
-            {
-                return data;
-            }
-            else
-            {
-                var res = new List<LikePicture>();
-                if (data.Count % 3 == 0)
-                {//整出
-                    Random rand = new Random();
-                    var m = data.Count / 3;
-                    var one = rand.Next(0, m);
-                    var two = rand.Next(m + 1, 2 * m);
-                    var three = rand.Next(2 * m + 1, 3 * m);
-                    res.Add(data[one]);
-                    res.Add(data[two]);
-                    res.Add(data[three]);
-                }
-                else
-                {//不能整出
-                    Random rand = new Random();
-                    var num = data.Count % 3;//余数
-                    var m = (data.Count - num) / 3;
-                    var one = rand.Next(0, m);
-                    var two = rand.Next(m + 1, 2 * m);
-                    var three = rand.Next(2 * m + 1, 3 * m + num);
-                    res.Add(data[one]);
-                    res.Add(data[two]);
-                    res.Add(data[three]);
-                }
-                return res;
-            }
+            var data = query.db.LikePicture.OrderBy(m => Guid.NewGuid()).Take(3).ToList();
+            return data;
+            //var data = query.db.LikePicture.ToList();
+            //if (data.Count <= 3)
+            //{
+            //    return data;
+            //}
+            //else
+            //{
+            //    var res = new List<LikePicture>();
+            //    if (data.Count % 3 == 0)
+            //    {//整出
+            //        Random rand = new Random();
+            //        var m = data.Count / 3;
+            //        var one = rand.Next(0, m);
+            //        var two = rand.Next(m + 1, 2 * m);
+            //        var three = rand.Next(2 * m + 1, 3 * m);
+            //        res.Add(data[one]);
+            //        res.Add(data[two]);
+            //        res.Add(data[three]);
+            //    }
+            //    else
+            //    {//不能整出
+            //        Random rand = new Random();
+            //        var num = data.Count % 3;//余数
+            //        var m = (data.Count - num) / 3;
+            //        var one = rand.Next(0, m);
+            //        var two = rand.Next(m + 1, 2 * m);
+            //        var three = rand.Next(2 * m + 1, 3 * m + num);
+            //        res.Add(data[one]);
+            //        res.Add(data[two]);
+            //        res.Add(data[three]);
+            //    }
+            //    return res;
+            //}
         }
     }
 }
