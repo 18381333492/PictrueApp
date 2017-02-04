@@ -76,20 +76,6 @@ $(function () {
         }
     }
 
-    //自定义添加tabs标签
-    window.AddAutoTab = function (url, title) {
-        if ($('#tabs').tabs("getTab", title)) {
-            $('#tabs').tabs("select", title);
-        }
-        else {
-            var height = $('#tabs').height() - 35 - 2 * 4;
-            $('#tabs').tabs('add', {
-                title: title,
-                content: '<iframe scrolling="auto" frameborder="0"  src="' + url + '" width="100%" height="' + height + 'px";></iframe>',
-                closable: true
-            });
-        }
-    }
     /*!
     * method:安全退出/注销
     * author:[汤台]

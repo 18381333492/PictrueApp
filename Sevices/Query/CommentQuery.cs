@@ -37,5 +37,18 @@ namespace Sevices
             return query.db.Comment.Find(ID);
         }
 
+
+        /// <summary>
+        /// 随机获取评论数据
+        /// </summary>
+        /// <returns></returns>
+        public string GetRandomList()
+        {
+            StringBuilder sSql = new StringBuilder();
+            sSql.AppendFormat(@"SELECT TOP 15 * FROM [Comment] 
+                                        WHERE bIsDeleted=0 ORDER BY NEWID()");
+            return C_Json.toJson(query.QueryByDapper(sSql.ToString(),null));
+        }
+
     }
 }

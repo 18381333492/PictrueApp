@@ -64,10 +64,11 @@ namespace Web.Areas.Mobile.Controllers
         /// </summary>
         /// <param name="sGoodsId"></param>
         /// <returns></returns>
-        public ActionResult GetCommentListBysGoodsId(PageInfo info, Guid sGoodsId)
+        public void GetCommentListBysGoodsId()
         {
             var domin = Resolve<CommentService>();
-            return  Content(domin.GetList(info, sGoodsId));
+            result.data = domin.GetRandomList();
+            result.success = true;      
         }
 
 
