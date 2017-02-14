@@ -1,0 +1,58 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta http-equiv="Cache-Control" content="max-age=180">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <meta http-equiv="x-dns-prefetch-control" content="on">
+    <link href="~/Areas/Mobile/Content/fonts/iconfont.css" rel="stylesheet" />
+
+    <link href="~/Areas/Mobile/Content/css/swiper.min.css" rel="stylesheet" />
+    <link href="~/Areas/Mobile/Content/css/basestyle.css" rel="stylesheet" />
+    <link href="~/Areas/Mobile/Content/css/common.css" rel="stylesheet" />
+    <link href="~/Areas/Mobile/Content/css/style.css" rel="stylesheet" />
+
+    <script src="~/Areas/Mobile/Content/js/jquery-1.8.3.min.js"></script>
+    <script src="~/Areas/Mobile/Content/js/common.js"></script>
+    <script src="~/Areas/Mobile/Content/js/swiper.min.js"></script>
+
+    <script src="~/Areas/Mobile/layer/layer.js"></script>
+    <script src="~/Scripts/mylib/common.client.js"></script>
+    <script type="text/javascript">
+        //监听安卓返回键
+        document.addEventListener('plusready', function () {
+            //console.log("所有plus api都应该在此事件发生后调用，否则会出现plus is undefined。"
+            var i = 0;
+            plus.key.addEventListener("backbutton", function () {
+                if ($(".msgtipbar").length == 0) {
+                    var maskPanelHtml = '<div class="msgtipbar animated flipInX"style="bottom:100px;font-weight: bold;left: 0;position:fixed;text-align:center;width:100%;z-index:100;opacity:0.7;"><tip style="background: #333333 none repeat scroll 0 0;border-radius: 2px;color: #fff;display: inline-block;line-height: 30px;padding: 0 10px;"></tip></div>';
+                    $("body").append(maskPanelHtml);
+                    $(".msgtipbar").show();
+                    $(".msgtipbar tip").text("亲,再点击就要离开我了哦!");
+                    setTimeout(function () {
+                        $(".msgtipbar").hide();
+                        $(".msgtipbar").remove();
+                    }, 3000);
+                }
+                else {
+                    i++;
+                    if (i == 1)
+                        alertPay();
+                    else
+                        plus.runtime.quit();//退出客户端
+                }
+            });
+        });
+    </script>
+    <title>@ViewBag.Title</title>
+</head>
+<body>
+    <div class="wx-top">
+        <div class="top-title" style="overflow:hidden">@ViewBag.Title</div>
+    </div>
+    @RenderBody()
+</body>
+</html>

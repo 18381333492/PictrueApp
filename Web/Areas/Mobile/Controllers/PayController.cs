@@ -24,7 +24,7 @@ namespace Web.Areas.Mobile.Controllers
         /// 商品列表展示页
         /// </summary>
         /// <returns></returns>
-        public ActionResult Index()
+        public ActionResult Success()
         {
             return View();
         }
@@ -33,16 +33,16 @@ namespace Web.Areas.Mobile.Controllers
         /// 发起支付请求
         /// </summary>
         /// <param name="money">单位(元)</param>
-        public void PayRequest(string money)
+        public void  PayRequest(string money)
         {
             //商户订单号
             string out_order_no =DateTime.Now.ToString("yyyyMMddhhmmssfff");
             //商品名称
-            string subject = "图片APP";
+            string subject = "黄金会员";
             //金额
             string total_fee = money;
             //订单描述
-            string body = "图片APP的订单";
+            string body = "开通黄金会员";
 
             //商户号（6位数字）
             string user_seller = C_Config.ReadAppSetting("user_seller");
@@ -60,18 +60,72 @@ namespace Web.Areas.Mobile.Controllers
             string UrlParm = GetUrlParm(partner, user_seller, out_order_no, subject, total_fee, body, notify_url, return_url, key);
 
             //发起请求的url
-            string sUrl = "http://www.passpay.net/PayOrder/payorder;";
-            sUrl = sUrl + "?" + UrlParm;
-
-            HttpWebRequest request = HttpWebRequest.Create(sUrl) as HttpWebRequest;
-            request.Method = "GET";
-            request.Timeout = 3000 * 1000;
-            request.GetResponse();
+            string sUrl =string.Format("http://www.passpay.net/PayOrder/payorder?{0}", UrlParm);
+        
+            result.data = sUrl;
+            result.success = true;
 
         }
 
+        public void AsyncNotify()
+        {
+            string meg = string.Empty;
+            try
+            {
+                //交易金额
+                string total_fee = Request.QueryString["total_fee"].ToString();
+                //商户订单号
+                string out_order_no = Request.QueryString["out_order_no"].ToString();
+                //服务端校验码
+                string sign = Request.QueryString["sign"].ToString();
+                //云通付交易订单号
+                string trade_no = Request.QueryString["trade_no"].ToString();
+                //交易结果（TRADE_SUCCESS说明支付成功）
+                string trade_status = Request.QueryString["trade_status"].ToString();
+                //合作身份者PID，签约账号，由16位纯数字组成的字符串，请登录商户后台查看
+                string partner = "738513346376621";
+                // MD5密钥，安全检验码，由数字和字母组成的32位字符串，请登录商户后台查看
+                string key = "JHeP76Kzd8aMQv8GZxZ3Gi8NgI2gfgAW";
+                bool State = NotifyState(total_fee, out_order_no, sign, trade_no, trade_status, partner, key);
+                if (State)
+                {
+                    meg = "验证成功";
+                }
+                else
+                {
+                    meg = "验证失败";
+                }
+            }
+            catch (Exception ex)
+            {
+                meg = "数据未传回或参数错误";
+            }
+        }
 
-     
+
+        /// <summary>
+        /// 验证状态
+        /// </summary>
+        /// <param name="total_fee">交易金额</param>
+        /// <param name="out_order_no">商户订单号</param>
+        /// <param name="sign">服务端校验码</param>
+        /// <param name="trade_no">云通付交易订单号</param>
+        /// <param name="trade_status">交易结果（TRADE_SUCCESS说明支付成功）</param>
+        /// <param name="partner">合作身份者PID，签约账号，由16位纯数字组成的字符串，请登录商户后台查看</param>
+        /// <param name="key">MD5密钥，安全检验码，由数字和字母组成的32位字符串，请登录商户后台查看</param>
+        /// <returns></returns>
+        public bool NotifyState(string total_fee, string out_order_no, string sign, string trade_no, string trade_status, string partner, string key)
+        {
+            string val = string.Empty;
+            val += out_order_no + total_fee + trade_status + partner + key;
+            val = md5(val.ToString());
+            if (sign == val)
+                return true;
+            else
+                return false;
+
+        }
+
 
         /// <summary>
         /// 获取URL参数
@@ -101,7 +155,7 @@ namespace Web.Areas.Mobile.Controllers
             prestr += "subject=" + subject + "&";
             prestr += "total_fee=" + total_fee + "&";
             prestr += "user_seller=" + user_seller;
-            string sign =  (prestr + key);
+            string sign =md5(prestr + key);
             return prestr + "&sign=" + sign;
         }
 

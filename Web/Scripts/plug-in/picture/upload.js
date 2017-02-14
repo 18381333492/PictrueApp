@@ -6,7 +6,8 @@ function upload() {
     var defaults = {
         url: "/HandleProgram/PictureUpload.ashx",
         width:120,
-        height:120,
+        height: 120,
+        isTip:false
     }
 
     //创建图片上传插件
@@ -49,7 +50,10 @@ function upload() {
 
     //上传图片
     function Up() {
-             //利用easyui的表单提交上传图片
+        if (defaults.isTip) {
+            $(element).next().next().text("正在上传....<br/>(请不要关闭对话框!)");
+        }
+           //利用easyui的表单提交上传图片
         $(element).find("form").form('submit', {
             url: defaults.url,
             //queryParams: { path: option.path },
@@ -58,6 +62,8 @@ function upload() {
                 if (data.error == 0) {
                     $(element).find("img").attr("src", data.url);
                     $(element).next().val(data.url);
+                    if (defaults.isTip)
+                    $(element).next().next().text("上传成功!");
                 } else {
                     alert(data.message);
                 }

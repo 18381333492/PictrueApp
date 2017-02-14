@@ -1,0 +1,26 @@
+﻿@{
+    ViewBag.Title = "支付成功";
+    Layout = "~/Areas/Mobile/Views/Shared/NoBottom.cshtml";
+}
+<style>
+.paysuccess{text-align: center;}
+.paysuccess img{width: 60px;margin: 90px auto 12px auto; display: block;}
+.paysuccess p{color:#333;line-height: 1.5; text-indent: 8px;}
+.paysuccess  .turnperson a{color:#fe8285;text-decoration: underline;}
+.paysuccess  .turnperson{display:inline-block;margin: 30px auto;max-width: 150px;text-align: center;line-height: 1.5;}
+</style>
+<div class="paysuccess">
+    <img src="~/Areas/Mobile/Content/img/ok.png" alt="支付成功" />
+    <p>支付成功！</p>
+    <div class="turnperson  co333 font14">
+        开通黄金会员成功!<br /><a href="/Mobile/Home/Index">点击返回首页</a>
+    </div>
+</div>
+<script type="text/javascript">
+    $(function () {
+        var user =JSON.parse(window.localStorage.getItem("client_user"));
+        user.isHuangjin = true;
+        window.localStorage.setItem("client_user", JSON.stringify(user));
+    });
+</script>
+

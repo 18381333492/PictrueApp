@@ -17,7 +17,7 @@ window.alertPay = function () {
         html.push('<p style="line-height:25px;font-size:12px;text-align:center;color:#333;white-space:nowrap;">畅想百部成人体验电影大片</p>');
         html.push('</div>');
         html.push('<div cla style="padding:0 28px; background-color: green;margin: 0px 30px;border-radius:30px;position:relative">');
-        html.push('<p style="padding:9px;color:white;text-align:center">微 信 支 付</p>');
+        html.push('<p id="PayRequest" style="padding:9px;color:white;text-align:center">微 信 支 付</p>');
         html.push('<div style="padding: 19px;;color:green;position:absolute;left:-4px;background-color:white;border-radius:50%;top:0">');
         html.push('<i class="iconfont  icon-weixin" style="position:absolute;top:-4px;left:3px; font-size: 30px;"></i>');
         html.push('</div>');
@@ -40,6 +40,12 @@ window.alertPay = function () {
                 $('.layui-layer-content').height(350);
                 $('.layui-layer-title').remove();
                 $('.layui-layer-page').css("background-color", "#FF7575");
+                $('#PayRequest').on("click", function () {
+                    var com = new common();
+                    com.Ajax("/Mobile/Pay/PayRequest", "money=1", function (res) {
+                        window.location.href = res.data;
+                    })
+                });
             },
         });
     }

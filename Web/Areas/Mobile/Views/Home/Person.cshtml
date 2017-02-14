@@ -14,8 +14,8 @@
     <div class="mine-main">
         <div class="columns">
             <div class="con">
-                <a><i class="icon iconfont">&#xe62d;</i><p style="color:crimson">普通会员</p></a>
-                <a><i class="iconfont icon-jiaopian"></i><p style="color:blue;">观看体验区(特权)</p></a>
+                <a><i class="icon iconfont">&#xe62d;</i><p id="isHuangjin" style="color:crimson">普通会员</p></a>
+                <a><i class="iconfont icon-jiaopian"></i><p id="hailiang" style="color:blue;">观看体验区(特权)</p></a>
                 <a><p id="Pay" style="color:white;font-size:14px; background-color:crimson;height:40px;line-height:40px;width:80px;margin:auto">开通会员</p></a>
             </div>
         </div>
@@ -41,7 +41,8 @@
                 if (user == null) {
                     var user = {
                         account: userId + "_" + password,
-                        clientpassword: "client_" + password
+                        clientpassword: "client_" + password,
+                        isHuangjin:false
                     }
                   window.localStorage.setItem("client_user",JSON.stringify(user));
                     //显示出来
@@ -52,6 +53,11 @@
                     var user =JSON.parse(window.localStorage.getItem("client_user"));
                     $('.account').text(user.account);
                     $('.clientpassword').text(user.clientpassword);
+                    if (user.isHuangjin) {
+                        $('#isHuangjin').text("黄金会员");
+                        $('#hailiang').text("观看会员专区(特权)");
+                        $('#Pay').text("已开通");
+                    }
                     //不分配直接显示
                 }
 

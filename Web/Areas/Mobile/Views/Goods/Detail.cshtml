@@ -15,13 +15,13 @@
                 <div class="swiper-wrapper">
             @if (Model.sGoodsCategoryId.ToString().ToUpper() == "366B2C87-38CE-4EC4-A742-1E889C117299")
             {
-                <img id="video" data-gifffer="@Model.sGifPicturePath" style="height:206px;width:100%;" data-gifffer-duration="2000" />
-                  @*<div style="background-color:black">
-                    <video id="video" height="206">
+                @*<img id="video" data-gifffer="@Model.sGifPicturePath" style="height:206px;width:100%;" data-gifffer-duration="2000" />*@
+                  <div style="background-color:black">
+                    <video id="video" height="206" poster="@Model.sPicturePath">
                         手机版本太低,不支持播放
                         <source src="/Mobile/Goods/FileStream?sPath=@Model.sGifPicturePath" />
                     </video>
-                </div>*@
+                </div>
             }
             else
             {
@@ -39,8 +39,7 @@
                 <div class="pro-pri fl" style="color:#4873bc"><span>片名:@Model.sGoodsName</span></div>
             </div>
             <div class="pro-description" style="margin-top:0.5rem;">
-                @*@if (Model.sGoodsCategoryId.ToString().ToUpper() != "366B2C87-38CE-4EC4-A742-1E889C117299")
-                {*@
+             
                     <p style="font-weight:bold;color:crimson">猜你喜欢</p>
                     @foreach (var m in list)
                     {
@@ -54,11 +53,6 @@
                         }
                         i++;
                     }
-                @*}
-                else
-                {
-                    @:描述：<span>@Model.sGoodsDetail</span>
-                }*@
             </div>
             <div class="pro-parameter cl" style="color:crimson;font-weight:bold">
                 狼友热评
@@ -92,30 +86,36 @@
         var sGoodsId = '@Model.ID';
         domin.InitCommentData(sGoodsId);
         domin.bindEvent();
-        //if ($('#video').length != 0) {
-        //    var Media = document.getElementById("video");
-        //    var width = $('.swiper-wrapper').width();
-        //    Media.width = width;
-        //    Media.controls = true;
-        //    var eventTester = function (e) {
-        //        Media.addEventListener(e, function () {
-        //            var dd = Media.currentTime;
-        //            if (dd >= 20) {
-        //                Media.currentTime = 0;
-        //                Media.pause();
-        //                alertPay();
-        //            }
-        //        }, false);
-        //    }
-        //    eventTester("timeupdate");
-        //    Media.play();
-        //}
-    });
-    window.onload = function () {
         if ($('#video').length != 0) {
-            Gifffer();
+            var on = true;
+            var Media = document.getElementById("video");
+            var width = $('.swiper-wrapper').width();
+            Media.width = width;
+            Media.controls = true;
+            var eventTester = function (e) {
+                Media.addEventListener(e, function () {
+                    var dd = Media.currentTime;
+                    if (dd >= 40) {
+                        Media.currentTime = 0;
+                        Media.pause();
+                        alertPay();
+                       // on = false;
+                    }
+                }, false);
+            }
+            eventTester("timeupdate");
+            //Media.addEventListener("canplay", function () {
+            //    if(on)
+            //    Media.play();
+            //}, false);
+           
         }
-    }
+    });
+    //window.onload = function () {
+    //    if ($('#video').length != 0) {
+    //        Gifffer();
+    //    }
+    //}
 
     var domin = (function (obj) { return obj; }(new function () {
 
