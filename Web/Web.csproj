@@ -218,6 +218,9 @@
     <Content Include="Areas\Admin\Content\Login\demo.html" />
     <Content Include="Areas\Admin\Content\Login\images\1.jpg" />
     <Content Include="Areas\Admin\Content\Login\images\37.jpg" />
+    <Content Include="Areas\Admin\Content\Login\images\copy_rignt_24.png" />
+    <Content Include="Areas\Admin\Content\Login\images\mask.png" />
+    <Content Include="Areas\Admin\Content\Login\js\jquery-1.8.2.min.js" />
     <Content Include="Areas\Admin\js\Home\Index.js" />
     <Content Include="Areas\Admin\js\Home\Login.js" />
     <Content Include="Areas\Mobile\Content\css\bootstrap.css" />
@@ -1111,6 +1114,7 @@
     <Content Include="Areas\Mobile\Content\fonts\iconfont.woff" />
     <Content Include="Areas\Mobile\Views\Pay\Success.cshtml" />
     <Content Include="Areas\Mobile\Views\Shared\NoBottom.cshtml" />
+    <Content Include="Areas\Admin\Content\Login\images\Thumbs.db" />
     <None Include="bundleconfig.json" />
     <Content Include="HandleProgram\PictureUpload.ashx" />
     <Content Include="HandleProgram\Handler.ashx" />
@@ -1178,7 +1182,6 @@
     <Folder Include="Areas\Admin\Content\easyui\plugins\" />
     <Folder Include="Areas\Admin\Content\easyui\src\" />
     <Folder Include="Areas\Admin\Content\easyui\themes\" />
-    <Folder Include="Areas\Admin\Content\Login\js\" />
     <Folder Include="Areas\Mobile\js\" />
     <Folder Include="Areas\Pays\Controllers\" />
     <Folder Include="Areas\Pays\Views\Shared\" />
