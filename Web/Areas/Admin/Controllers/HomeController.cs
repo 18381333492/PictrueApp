@@ -16,13 +16,6 @@ namespace Web.Areas.Admin.Controllers
     {
         //
         // GET: /Admin/Home/
-
-        [NoLogin]
-        public ActionResult Other()
-        {
-            return Redirect("http://www.chengjue123.com/index.html");
-        }
-
         public ActionResult Index()
         {
             ViewBag.sUserName = SessionUser().sUserName;
@@ -32,10 +25,9 @@ namespace Web.Areas.Admin.Controllers
             return View();
         }
 
-        [NoLogin]
         public ActionResult My404()
         {
-            return Redirect("http://www.chengjue123.com/index.html");
+            return View();
         }
 
         /// <summary>
@@ -87,8 +79,13 @@ namespace Web.Areas.Admin.Controllers
                         //缓存用户的二级菜单和按钮
                         var menu = Resolve<MenusService>();
                         var button = Resolve<ButtonService>();
-                        Session[SESSION.Menu] = menu.GetSecondMenus(user.sRoleID);
-                        Session[SESSION.Button] = button.GetButton(user.sRoleID);
+
+                        UserMenus menus = new UserMenus();
+                        menus.Menus = menu.GetSecondMenus(user.sRoleID);
+                        UserButton buttons = new UserButton();
+                        buttons.Button = button.GetButton(user.sRoleID);
+                        Session[SESSION.Menu] = menus;
+                        Session[SESSION.Button] = buttons;
                         result.success = true;
                     }
                     else result.info = "该用户已被冻结,请联系管理员!";

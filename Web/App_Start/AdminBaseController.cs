@@ -36,6 +36,7 @@ namespace Web.App_Start
         /// <summary>
         /// 缓存的session的相关信息
         /// </summary>
+        [Serializable]
         public class SESSION
         { 
             public static string User = "@_User";
@@ -122,10 +123,10 @@ namespace Web.App_Start
                     var sPath = filterContext.RequestContext.HttpContext.Request.Url.AbsolutePath.ToLower();
                     if (sPath.Contains("index") && !sPath.Contains("home"))
                     {
-                        var menu = (Session[SESSION.Menu] as List<Menus>).Where(m => m.sMenuUrl.ToLower() == sPath).FirstOrDefault();
+                        var menu = (Session[SESSION.Menu] as UserMenus).Menus.Where(m => m.sMenuUrl.ToLower() == sPath).FirstOrDefault();
                         if (menu != null)
                         {
-                            var buttonList = (Session[SESSION.Button] as List<Button>).Where(m => m.sToMenuId == menu.ID).OrderBy(m => m.iOrder).ToList();
+                            var buttonList = (Session[SESSION.Button] as UserButton).Button.Where(m => m.sToMenuId == menu.ID).OrderBy(m => m.iOrder).ToList();
                             filterContext.Controller.ViewData["Button"] = buttonList;
                         }
                     }

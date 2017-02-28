@@ -18,7 +18,7 @@ namespace Web.Areas.Mobile
 				"Mobile_default",
 				"Mobile/{controller}/{action}/{id}",
 				new { action = "Index", id = UrlParameter.Optional }
-			);
+            );
 		}
 	}
 }

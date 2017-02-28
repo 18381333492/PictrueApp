@@ -16,9 +16,9 @@ namespace Web
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Home", action = "Other", id = UrlParameter.Optional },
-                namespaces:new string[] { "Web.Controllers" }
-                ).DataTokens.Add("area","Admin");
+                defaults: new { controller = "Main", action = "Index", id = UrlParameter.Optional },
+                namespaces: new string[] { "Web.Controllers" }
+              );
 		}
 	}
 }

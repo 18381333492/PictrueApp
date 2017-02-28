@@ -80,10 +80,7 @@ namespace Web
         /// </summary>
         private void VisitsCount(object a)
         {
-            using (var db=new Entities())
-            {
-               
-            }
+           
         }
     }
 }

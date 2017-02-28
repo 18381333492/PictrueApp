@@ -12,6 +12,7 @@ namespace EFModel
     using System;
     using System.Collections.Generic;
     
+    [Serializable]
     public partial class Menus
     {
         public System.Guid ID { get; set; }

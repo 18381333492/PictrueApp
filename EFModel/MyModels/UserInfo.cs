@@ -10,6 +10,7 @@ namespace EFModel.MyModels
     /// <summary>
     /// 后台session保存的数据
     /// </summary>
+    [Serializable()]
     public  class UserInfo
     {
         public Guid ID
@@ -43,6 +44,29 @@ namespace EFModel.MyModels
         /// Ip地址
         /// </summary>
         public string Ip
+        {
+            get;
+            set;
+        }
+    }
+
+    /// <summary>
+    /// 
+    /// </summary>
+    [Serializable()]
+    public class UserMenus
+    {
+        public List<Menus> Menus
+        {
+            get;
+            set;
+        }
+    }
+
+    [Serializable()]
+    public class UserButton
+    {
+        public List<Button> Button
         {
             get;
             set;
