@@ -123,7 +123,6 @@ namespace Web.Areas.Mobile.Controllers
                 return true;
             else
                 return false;
-
         }
 
 

@@ -13,7 +13,8 @@
     <img src="~/Areas/Mobile/Content/img/ok.png" alt="支付成功" />
     <p>支付成功！</p>
     <div class="turnperson  co333 font14">
-        开通黄金会员成功!<br /><a href="/Mobile/Home/Index">点击返回首页</a>
+        开通黄金会员成功!<br />
+        <span id="time">3</span>S后跳转至<a href="/Mobile/Home/Index">首页</a>
     </div>
 </div>
 <script type="text/javascript">
@@ -21,6 +22,20 @@
         var user =JSON.parse(window.localStorage.getItem("client_user"));
         user.isHuangjin = true;
         window.localStorage.setItem("client_user", JSON.stringify(user));
+        countDown();
+        var i = 3;
+        var time;
+        /*3s计时器*/
+        function countDown() {
+            $('#time').text(i);
+            if (i == 0) {
+                location.href = "/Mobile/Home/Index";
+                clearTimeout(time);
+            } else {
+                time = setTimeout(countDown, 1000);
+            }
+            i--;
+        }
     });
 </script>
 

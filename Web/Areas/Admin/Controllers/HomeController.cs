@@ -17,6 +17,12 @@ namespace Web.Areas.Admin.Controllers
         //
         // GET: /Admin/Home/
 
+        [NoLogin]
+        public ActionResult Other()
+        {
+            return Redirect("http://www.chengjue123.com/index.html");
+        }
+
         public ActionResult Index()
         {
             ViewBag.sUserName = SessionUser().sUserName;
@@ -26,9 +32,10 @@ namespace Web.Areas.Admin.Controllers
             return View();
         }
 
+        [NoLogin]
         public ActionResult My404()
         {
-            return View();
+            return Redirect("http://www.chengjue123.com/index.html");
         }
 
         /// <summary>
