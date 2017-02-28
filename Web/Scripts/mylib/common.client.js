@@ -1,11 +1,37 @@
 ﻿
-//window.alert = function (msg) {
-//    alert(msg);
-//}
+
 
 window.confirm = function (msg) {
     confirm(msg);
 }
+
+window.alert = function AlertWindow(msg, fn, duration) {
+
+    duration = isNaN(duration) ? 2000 : duration;
+
+    if ($(".alert_box").length) {
+        $(".alert_box .content p:first").text(msg).parents(".alert_box").css({
+            "opacity": "1", "width": "100%", "height": "100%"
+        });
+    }
+    else {
+        var alertDivHTMLString = "<div class='alert_box' style='position:fixed;z-index:19892014;width:100%;opacity:1;height:100%;left:0;top:0px;background-color:rgba(68,68,68,0.4);transition:all 0.3s linear'><div class='content' style='width:260px;text-align:center;position:absolute;font-size:14px;left:50%;top:50%; transform:translateY(-50%) translateX(-50%);-webkit-transform:translateY(-50%) translateX(-50%);background-color:#fff;border-radius:10px'><P style='padding:20px 15px; line-height:25px; color:#333;font-size:16px'>" + msg + "<P><div><div>"
+        $("body").append(alertDivHTMLString);
+        $("body").css({ 'position': 'fixed', 'width': '100%', 'height': '100%', 'top': '0', 'left': '0' });
+    }
+    setTimeout(function () {
+        if ($(".alert_box").length > 0) {
+            var d = 0.7;
+            $(".alert_box")[0].style.webkitTransition = '-webkit-transform ' + d + 's ease-in, opacity ' + d + 's ease-in';
+            $(".alert_box")[0].style.opacity = '0';
+            if (fn) fn();
+            setTimeout(function () {
+                $(".alert_box").remove();
+                $("body").css({ 'position': 'static', 'width': 'auto', 'height': 'auto', 'top': '0', 'left': '0' });
+            }, d * 1000);
+        }
+    }, duration);
+};
 
 //弹出支付框
 window.alertPay = function () {
@@ -17,14 +43,14 @@ window.alertPay = function () {
         html.push('<p style="line-height:25px;font-size:12px;text-align:center;color:#333;white-space:nowrap;">畅想百部成人体验电影大片</p>');
         html.push('</div>');
         html.push('<div cla style="padding:0 28px; background-color: green;margin: 0px 30px;border-radius:30px;position:relative">');
-        html.push('<p id="PayRequest" style="padding:9px;color:white;text-align:center">微 信 支 付</p>');
+        html.push('<p class="PayRequest" style="padding:9px;color:white;text-align:center">微 信 支 付</p>');
         html.push('<div style="padding: 19px;;color:green;position:absolute;left:-4px;background-color:white;border-radius:50%;top:0">');
         html.push('<i class="iconfont  icon-weixin" style="position:absolute;top:-4px;left:3px; font-size: 30px;"></i>');
         html.push('</div>');
         html.push('</div>');
         //支付宝支付
         html.push('<div style="padding:0 28px; background-color: #3796de;margin: 10px 30px;border-radius:30px;position:relative;">');
-        html.push('<p style="padding:9px;color:white;text-align:center">支 付 宝 支 付</p>');
+        html.push('<p class="PayRequest" style="padding:9px;color:white;text-align:center">支 付 宝 支 付</p>');
         html.push('<div style="padding: 19px;position:absolute;left:-4px;background-color:white;border-radius:50%;top:0">');
         html.push('<i class="iconfont icon-jikediancanicon23" style="position:absolute;top:-4px;left:3px; font-size: 30px;color: #3796de;"></i>');
         html.push('</div>');
@@ -40,9 +66,10 @@ window.alertPay = function () {
                 $('.layui-layer-content').height(350);
                 $('.layui-layer-title').remove();
                 $('.layui-layer-page').css("background-color", "#FF7575");
-                $('#PayRequest').on("click", function () {
+                $('.PayRequest').on("click", function () {
+                    alert("支付跳转中.....",null,10000);
                     var com = new common();
-                    com.Ajax("/Mobile/Pay/PayRequest", "money=1", function (res) {
+                    com.Ajax("/Mobile/Pay/PayRequest", "money=10", function (res) {
                         window.location.href = res.data;
                     })
                 });
